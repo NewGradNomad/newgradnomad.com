@@ -1,0 +1,23 @@
+.green-nav {
+  background-color: #449175;
+  font-size: large;
+  font-weight: bold;
+}
+
+.post-job {
+  background-color: #ed6f26 !important;
+  border-color: #ed6f26 !important;
+  background: 103px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 110px;
+  max-height: 45px;
+}
+.nav-links {
+  background-color: #ed262600 !important;
+  border-color: #ed6f2600 !important;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 105px;
+  max-height: 45px;
+}
