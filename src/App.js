@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from "./NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <h1>newgradnomad.com</h1>
-    </div>
+    <>
+      <NavBar />
+    </>
   );
 }
 
