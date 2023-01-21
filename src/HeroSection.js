@@ -11,10 +11,10 @@ function HeroSection() {
         <Container className="text-center">
           <Button className=" btn btn-lg mx-2" variant="light">
             Post a Job
-          </Button>{" "}
-          <Button className=" btn btn-lg" variant="light">
+          </Button>
+          <Button className=" btn btn-lg" variant="light" href="./About">
             NGN Info
-          </Button>{" "}
+          </Button>
         </Container>
       </div>
     </>
