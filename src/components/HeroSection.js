@@ -5,21 +5,19 @@ import Container from "react-bootstrap/Container";
 function HeroSection() {
   return (
     <>
-      <div className="hero-container">
-        <h1 className="title">newgradnomad.com</h1>
-        <p className="slogan">
+      <Container fluid className="text-center hero-container">
+        <h1 className="fs-1 text-center">newgradnomad.com</h1>
+        <p className="fs-4 text-center">
           The best place for new graduates & entry-level talent to find remote
           work.
         </p>
-        <Container className="text-center">
-          <Button className=" btn btn-lg mx-2" variant="light">
-            Post a Job
-          </Button>
-          <Button className=" btn btn-lg" variant="light" href="./About">
-            NGN Info
-          </Button>
-        </Container>
-      </div>
+        <Button className=" btn btn-lg mx-1 mb-3" variant="light">
+          Post a Job
+        </Button>{" "}
+        <Button className=" btn btn-lg mx-1 mb-3" variant="light">
+          NGN Info
+        </Button>{" "}
+      </Container>
     </>
   );
 }
