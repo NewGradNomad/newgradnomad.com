@@ -7,5 +7,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 12px;
+  padding: 9rem;
+}
+
+.title{
+  font-size: 4rem;
+}
+
+.slogan{
+  font-size: 1.5rem;
 }
