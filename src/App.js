@@ -1,6 +1,6 @@
 import "./App.css";
-import NavBar from "./NavBar";
-import HeroSection from "./HeroSection";
+import NavBar from "./components/NavBar";
+import HeroSection from "./components/HeroSection";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 

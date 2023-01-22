@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import { Nav, Navbar } from "react-bootstrap";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import About from "./About";
+import About from "../About";
 
 function NavBar() {
   return (
