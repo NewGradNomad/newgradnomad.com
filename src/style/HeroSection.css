@@ -1,19 +1,5 @@
 .hero-container {
-  height: 20vh;
-  width: 100%;
-  display: flex;
   background-color: gray;
   color: aliceblue;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 9rem;
-}
-
-.title{
-  font-size: 4rem;
-}
-
-.slogan{
-  font-size: 1.5rem;
+  padding: 2rem;
 }
