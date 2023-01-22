@@ -3,12 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Nav, Navbar } from "react-bootstrap";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import About from "./pages/About";
 
 function NavBar() {
   return (
-    <Router>
+    <>
       <Navbar className="green-nav" collapseOnSelect variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/">newgradnomad.com</Navbar.Brand>
@@ -31,11 +29,7 @@ function NavBar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <Routes>
-        <Route path="/About" element={<About />} />
-      </Routes>
-    </Router>
+    </>
   );
 }
 

@@ -14,7 +14,7 @@ function HeroSection() {
         <Button className=" btn btn-lg mx-1 mb-3" variant="light">
           Post a Job
         </Button>
-        <Button className=" btn btn-lg mx-1 mb-3" variant="light" href="./About">
+        <Button className=" btn btn-lg mx-1 mb-3" variant="light">
           NGN Info
         </Button>
       </Container>
