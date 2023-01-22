@@ -1,6 +1,6 @@
 import "./App.css";
-import NavBar from "./NavBar";
-import HeroSection from "./HeroSection";
+import NavBar from "./components/NavBar";
+import HeroSection from "./components/HeroSection";
 
 function App() {
   return (
