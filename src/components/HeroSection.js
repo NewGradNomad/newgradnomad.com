@@ -13,10 +13,10 @@ function HeroSection() {
         </p>
         <Button className=" btn btn-lg mx-1 mb-3" variant="light">
           Post a Job
-        </Button>{" "}
-        <Button className=" btn btn-lg mx-1 mb-3" variant="light">
+        </Button>
+        <Button className=" btn btn-lg mx-1 mb-3" variant="light" href="./About">
           NGN Info
-        </Button>{" "}
+        </Button>
       </Container>
     </>
   );
