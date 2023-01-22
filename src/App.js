@@ -9,7 +9,6 @@ export default function App() {
   return (
     <>
       <NavBar />
-      <HeroSection />
       <Router>
         <Routes>
           <Route path="/" exact component={<Home />} />
