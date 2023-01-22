@@ -2,7 +2,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./Home";
+import Home from "./components/pages/Home";
 
 export default function App() {
   return (
