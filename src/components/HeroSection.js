@@ -7,7 +7,10 @@ function HeroSection() {
     <>
       <div className="hero-container">
         <h1 className="title">newgradnomad.com</h1>
-        <p className="slogan">The best place for new graduates & entry-level talent to find remote work.</p>
+        <p className="slogan">
+          The best place for new graduates & entry-level talent to find remote
+          work.
+        </p>
         <Container className="text-center">
           <Button className=" btn btn-lg mx-2" variant="light">
             Post a Job
