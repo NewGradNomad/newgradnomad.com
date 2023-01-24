@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "../../style/About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 export default function About() {
