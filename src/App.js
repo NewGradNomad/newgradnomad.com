@@ -4,6 +4,8 @@ import HeroSection from "./components/HeroSection";
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+import Programs from "./components/pages/Programs"
+import Programs_Render from "./components/pages/Programs_Render";
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/About" element={<About />} />
+          <Route path="/Programs" element={<Programs />} />
+          <Route path="/Programs_Render" element={<Programs_Render />} />
         </Routes>
       </Router>
     </>
