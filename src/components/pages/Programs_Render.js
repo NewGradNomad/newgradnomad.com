@@ -8,15 +8,17 @@ import { FormControl } from 'react-bootstrap';
 // Programs_Render() fetches Programs.js's table to then be rendered here via search
 function Programs_Render() {
     const [query, setQuery] = useState("");
+
+    const keys = ["company_name", "program_name", "industry", "remote"]
+
+    // search functionality that looks for keywords related to the above keys
     const search = (data) => {
         return data.filter(
           (item) => 
-            item.company_name.toLowerCase().includes(query) ||
-            item.program_name.toLowerCase().includes(query) ||
-            item.industry.toLowerCase().includes(query) ||
-            item.remote.toLowerCase().includes(query)
+            keys.some(key=>item[key].toLowerCase().includes(query))
         );
     };
+    
     return (
       <>
       <Container>
@@ -33,7 +35,7 @@ function Programs_Render() {
             className='mt-3 form-control sm'
             onChange={(e) => setQuery(e.target.value)} 
           />
-        <Programs data={search(JSON_data)} />
+        <Programs data={search(JSON_data)}/>
       </Container>
       </>
     );
