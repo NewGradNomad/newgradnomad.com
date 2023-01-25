@@ -15,7 +15,7 @@ function NavBar() {
   const newsletterShow = () => setShow(true);
 
   const [validated, setValidated] = useState(false);
-  const handleSubmit = (event) => {
+  const newsletterSubmit = (event) => {
     const inpObj = event.currentTarget;
     if (inpObj.checkValidity() === false) {
       event.preventDefault();
@@ -61,7 +61,7 @@ function NavBar() {
           <Form
             noValidate
             validated={validated}
-            onSubmit={handleSubmit}
+            onSubmit={newsletterSubmit}
             action="/#emailList"
           >
             <Form.Group
