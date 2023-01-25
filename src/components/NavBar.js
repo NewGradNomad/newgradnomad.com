@@ -11,8 +11,8 @@ import React, { useState } from "react";
 function NavBar() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const newsletterClose = () => setShow(false);
+  const newsletterShow = () => setShow(true);
 
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
@@ -41,14 +41,14 @@ function NavBar() {
               <Nav.Link className="nav-links" href="./About">
                 About
               </Nav.Link>
-              <Nav.Link className="nav-links" onClick={handleShow}>
+              <Nav.Link className="nav-links" onClick={newsletterShow}>
                 Sign up
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={newsletterClose}>
         <Modal.Header closeButton>
           <Modal.Title>Newsletter Signup</Modal.Title>
         </Modal.Header>
@@ -82,7 +82,7 @@ function NavBar() {
                 </Form.Control.Feedback>
               </InputGroup>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={newsletterClose}>
                   Cancel
                 </Button>
                 <Button variant="primary" type="submit">
