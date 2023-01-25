@@ -11,7 +11,6 @@ const ProgramsTable = ( {data} ) => {
                 <th>Company Name</th>
                 <th>Program Name</th>
                 <th>Industry</th>
-                <th>Remote?</th>
             </tr>
             </thead>
             <tbody>
@@ -20,7 +19,6 @@ const ProgramsTable = ( {data} ) => {
                     <td>{item.company_name}</td>
                     <td>{item.program_name}</td>
                     <td>{item.industry}</td>
-                    <td>{item.remote}</td>
                 </tr>
             ))}
             </tbody>
