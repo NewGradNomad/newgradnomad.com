@@ -1,33 +1,158 @@
 [
-
     {
-        "id":1,
-        "company_name":"AT&T",
-        "program_name":"Development Program",
-        "industry":"Technology & Engineering",
-        "remote":"❔"
+      "id": 1,
+      "company_name": "AT&T",
+      "program_name": "Development Programs",
+      "industry": "Technology & Engineering"
     },
     {
-        "id":2,
-        "company_name":"Caterpillar",
-        "program_name":"Leadership & Technical Development Program",
-        "industry":"Technology & Engineering",
-        "remote":"❔"
+      "id": 2,
+      "company_name": "Caterpillar",
+      "program_name": "Engineering Rotational Development Program",
+      "industry": "Technology & Engineering"
     },
     {
-        "id":3,
-        "company_name":"Dow Chemical Company",
-        "program_name":"Development Program",
-        "industry":"Technology & Engineering",
-        "remote":"❔"
+      "id": 3,
+      "company_name": "Dow Chemical Company",
+      "program_name": "Development Programs",
+      "industry": "Technology & Engineering"
     },
-
     {
-        "id":4,
-        "company_name":"Dropbox",
-        "program_name":"Dropbox Rotation Program (DRP)",
-        "industry":"Technology & Engineering",
-        "remote":"❔"
-    }    
-
-]
+      "id": 4,
+      "company_name": "Dupont",
+      "program_name": "Leadership Development Program",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 5,
+      "company_name": "Eaton",
+      "program_name": "Leadership Development Program",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 6,
+      "company_name": "Emerson",
+      "program_name": "Engineers in Leadership Program",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 7,
+      "company_name": "GE",
+      "program_name": "Leadership Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 8,
+      "company_name": "Intel",
+      "program_name": "Rotational Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 9,
+      "company_name": "Linde",
+      "program_name": "Development Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 10,
+      "company_name": "Rockwell Automation",
+      "program_name": "Early Career Rotational and Training Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 11,
+      "company_name": "Siemens",
+      "program_name": "Development Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 12,
+      "company_name": "StanleyBlack& Decker",
+      "program_name": "Development Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 13,
+      "company_name": "Texas Instruments",
+      "program_name": "Rotation Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 14,
+      "company_name": "Port Authority of New York and New Jersey",
+      "program_name": "Various Programs",
+      "industry": "Technology & Engineering"
+    },
+    {
+      "id": 15,
+      "company_name": "Bae Systems",
+      "program_name": "Development Programs",
+      "industry": "Aerospace"
+    },
+    {
+      "id": 16,
+      "company_name": "Boeing",
+      "program_name": "Rotational Programs",
+      "industry": "Aerospace"
+    },
+    {
+      "id": 17,
+      "company_name": "Lockheed Martin",
+      "program_name": "Leadership Development Programs",
+      "industry": "Aerospace"
+    },
+    {
+      "id": 18,
+      "company_name": "Pratt & Whitney",
+      "program_name": "Leadership Development Programs",
+      "industry": "Aerospace"
+    },
+    {
+      "id": 19,
+      "company_name": "Textron",
+      "program_name": "Leadership Development Programs",
+      "industry": "Aerospace"
+    },
+    {
+      "id": 20,
+      "company_name": "Raytheon Technologies",
+      "program_name": "Leadership Development Programs",
+      "industry": "Aerospace"
+    },
+    {
+      "id": 21,
+      "company_name": "Amazon",
+      "program_name": "Jobs for Grads",
+      "industry": "Internet & Software"
+    },
+    {
+      "id": 22,
+      "company_name": "CS Disco",
+      "program_name": "Emerging Engineering Program",
+      "industry": "Internet & Software"
+    },
+    {
+      "id": 23,
+      "company_name": "Dropbox",
+      "program_name": "Dropbox Rotational Program",
+      "industry": "Internet & Software"
+    },
+    {
+      "id": 24,
+      "company_name": "Meta",
+      "program_name": "Various Programs",
+      "industry": "Internet & Software"
+    },
+    {
+      "id": 25,
+      "company_name": "Intuit",
+      "program_name": "Graduate Programs",
+      "industry": "Internet & Software"
+    },
+    {
+      "id": 26,
+      "company_name": "Spotify",
+      "program_name": "Various Programs",
+      "industry": "Internet & Software"
+    }
+  ]
