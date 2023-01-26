@@ -10,7 +10,7 @@ function Programs_Render() {
     const [query, setQuery] = useState("");
 
     //console.log(JSON_data.filter(item=>item.company_name.toLowerCase().includes("at")));
-    const keys = ["company_name", "program_name", "industry", "remote"]
+    const keys = ["company_name", "program_name", "industry"]
 
     // search functionality that looks for keywords related to the above keys
     const search = (data) => {
