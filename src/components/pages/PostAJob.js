@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../../style/PostAJob.css";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 export default function PostAJob() {
   return (
@@ -158,12 +157,11 @@ export default function PostAJob() {
           <Form.Label className="">
             <b>Job Description</b>
           </Form.Label>
-          <Form.Group controlId="jobDesc" >
+          <Form.Group controlId="jobDesc">
             <Form.Control
               as="textarea"
               placeholder=""
               style={{ height: "150px" }}
-              
             />
           </Form.Group>
 
