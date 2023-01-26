@@ -11,7 +11,7 @@ function HeroSection() {
           The best place for new graduates & entry-level talent to find remote
           work.
         </p>
-        <Button className=" btn btn-lg mx-1 mb-3" variant="light">
+        <Button className=" btn btn-lg mx-1 mb-3" variant="light" href="/PostAJob">
           Post a Job
         </Button>
         <Button className=" btn btn-lg mx-1 mb-3" variant="light" href="/Programs_Render">
