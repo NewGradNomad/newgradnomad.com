@@ -4,8 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 const ProgramsTable = ( {data} ) => {
     return (
-    <Container className='p-2'>
-        <Table striped bordered hover>
+        <Table striped bordered hover className='mt-2'>
             <thead>
             <tr>
                 <th>Company Name</th>
@@ -23,7 +22,6 @@ const ProgramsTable = ( {data} ) => {
             ))}
             </tbody>
         </Table>
-      </Container>
     );
 }
 
