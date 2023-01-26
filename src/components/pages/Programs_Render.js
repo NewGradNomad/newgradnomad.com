@@ -25,7 +25,7 @@ function Programs_Render() {
       <Container>
         <div className='mt-4 text-center'>
           <h1>New Graduate Programs</h1>
-          <p>Lot's of companies have programs completely dedicated to new graduates. You can search for the programs below but do note that not all these programs are remote. </p>
+          <p>Lots of companies have programs completely dedicated to new graduates. You can search for the programs below but do note that not all these programs are remote. </p>
           <p><a href="#form" style={{color:'#ed6f26'}}> Want your program featured on this page? Click here. </a></p>
         </div>
       </Container>
