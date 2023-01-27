@@ -11,10 +11,10 @@ function handleFormData(event) {
 
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
-  formValues.topics = formData.getAll("listingAddons");
+  formValues.topics = formData.getAll("topics");
   console.log({ formValues });
 }
-const jobForm = document.querySelector("form");
+//const jobForm = document.querySelector("form");
 
 //jobForm.addEventListener("submit", handleFormData);
 
@@ -108,11 +108,9 @@ export default function PostAJob() {
             <Form.Check
               required
               checked
-              disabled
               type="checkbox"
               label="Basic Job Posting ($150)"
-              name="listingAddons"
-              value="basicPosting"
+              name="basicPosting"
             />
           </Form.Group>
 
@@ -120,8 +118,7 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Receive 24-hour support for your job posting (+$79)"
-              value="support"
-              name="listingAddons"
+              name="support"
             />
           </Form.Group>
 
@@ -129,8 +126,7 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Highlight your job post in orange 🍊 to gain more views (+$39)"
-              value="highlightPost"
-              name="listingAddons"
+              name="highlightPost"
             />
           </Form.Group>
 
@@ -138,8 +134,7 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Pin post on front page for 24 hours (+$99)"
-              value="pinPost24hr"
-              name="listingAddons"
+              name="pinPost24hr"
             />
           </Form.Group>
 
@@ -147,8 +142,7 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Pin post on front page for 1 week (+$199)"
-              value="pinPost1wk"
-              name="listingAddons"
+              name="pinPost1wk"
             />
           </Form.Group>
 
@@ -156,8 +150,7 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Pin post on front page for 1 month (+$349)"
-              value="pinPost1mth"
-              name="listingAddons"
+              name="pinPost1mth"
             />
           </Form.Group>
 
