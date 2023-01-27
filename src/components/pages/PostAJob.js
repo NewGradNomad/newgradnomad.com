@@ -108,6 +108,7 @@ export default function PostAJob() {
             <Form.Check
               required
               checked
+              readOnly
               type="checkbox"
               label="Basic Job Posting ($150)"
               name="basicPosting"
