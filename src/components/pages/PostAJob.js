@@ -6,11 +6,23 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../../style/PostAJob.css";
 
+function handleFormData(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const formValues = Object.fromEntries(formData.entries());
+  formValues.topics = formData.getAll("listingAddons");
+  console.log({ formValues });
+}
+const jobForm = document.querySelector("form");
+
+//jobForm.addEventListener("submit", handleFormData);
+
 export default function PostAJob() {
   return (
     <>
       <Container className="gray-form mt-4 px-3">
-        <form>
+        <form onSubmit={handleFormData}>
           <Form.Label className="section-title mt-3">
             <b>Getting Started</b>
           </Form.Label>
@@ -23,6 +35,7 @@ export default function PostAJob() {
               required
               type="text"
               placeholder="Enter Company Name"
+              name="companyName"
             />
             <Form.Text className="form-text">
               * Your company's brand name without business entities
@@ -37,6 +50,7 @@ export default function PostAJob() {
               required
               type="text"
               placeholder="Enter Position Name"
+              name="positionName"
             />
 
             <Form.Text className="form-text">
@@ -49,6 +63,7 @@ export default function PostAJob() {
               required
               type="text"
               placeholder="Enter Position Type"
+              name="positionType"
             />
             <Form.Text className="form-text">
               * Specify full-time, part-time, etc...
@@ -63,6 +78,7 @@ export default function PostAJob() {
               required
               type="text"
               placeholder="Enter Primary Tag"
+              name="primaryTag"
             />
             <Form.Text className="form-text">
               * Main function of specified job
@@ -73,7 +89,12 @@ export default function PostAJob() {
             <Form.Label className="">
               <b>Keywords</b>
             </Form.Label>
-            <Form.Control required type="email" placeholder="Enter Keywords" />
+            <Form.Control
+              required
+              type="text"
+              placeholder="Enter Keywords"
+              name="keywords"
+            />
             <Form.Text className="form-text">
               * Main function of specified job
             </Form.Text>
@@ -90,6 +111,8 @@ export default function PostAJob() {
               disabled
               type="checkbox"
               label="Basic Job Posting ($150)"
+              name="listingAddons"
+              value="basicPosting"
             />
           </Form.Group>
 
@@ -97,6 +120,8 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Receive 24-hour support for your job posting (+$79)"
+              value="support"
+              name="listingAddons"
             />
           </Form.Group>
 
@@ -104,6 +129,8 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Highlight your job post in orange 🍊 to gain more views (+$39)"
+              value="highlightPost"
+              name="listingAddons"
             />
           </Form.Group>
 
@@ -111,6 +138,8 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Pin post on front page for 24 hours (+$99)"
+              value="pinPost24hr"
+              name="listingAddons"
             />
           </Form.Group>
 
@@ -118,6 +147,8 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Pin post on front page for 1 week (+$199)"
+              value="pinPost1wk"
+              name="listingAddons"
             />
           </Form.Group>
 
@@ -125,6 +156,8 @@ export default function PostAJob() {
             <Form.Check
               type="checkbox"
               label="Pin post on front page for 1 month (+$349)"
+              value="pinPost1mth"
+              name="listingAddons"
             />
           </Form.Group>
 
@@ -136,7 +169,12 @@ export default function PostAJob() {
             <Form.Label className="">
               <b>Application URL</b>
             </Form.Label>
-            <Form.Control required type="text" placeholder="https://" />
+            <Form.Control
+              required
+              type="text"
+              placeholder="https://"
+              name="appURL"
+            />
             <Form.Text className="form-text">
               * This is the job link applicants will be forwarded to in order to
               apply top your job
@@ -147,7 +185,13 @@ export default function PostAJob() {
             <Form.Label className="">
               <b>Gateway Email Address</b>
             </Form.Label>
-            <Form.Control required disabled type="text" placeholder="..." />
+            <Form.Control
+              required
+              disabled
+              type="text"
+              placeholder="..."
+              name="appEmail"
+            />
             <Form.Text className="form-text">
               * Applicant is routed to this email if no application url is
               provided!
@@ -161,6 +205,7 @@ export default function PostAJob() {
             <Form.Control
               as="textarea"
               placeholder=""
+              name="jobDesc"
               style={{ height: "150px" }}
             />
           </Form.Group>
