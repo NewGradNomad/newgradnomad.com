@@ -11,12 +11,11 @@ function handleFormData(event) {
 
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
-  formValues.topics = formData.getAll("topics");
-  console.log({ formValues });
-}
-//const jobForm = document.querySelector("form");
+  const formDataAsJsonStrings = JSON.stringify( formValues, null, 3 );
+  console.log(formDataAsJsonStrings);
 
-//jobForm.addEventListener("submit", handleFormData);
+  //const { writeFileSync } = require("fs");
+}
 
 export default function PostAJob() {
   return (
