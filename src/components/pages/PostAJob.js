@@ -265,9 +265,10 @@ export default class PostAJob extends Component {
               />
               <Form.Text
                 hidden={
-                  RegExp(
-                    "[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+.)[A-Za-z]{2,4}$"
-                  ).test(this.state.appEmail) ||
+                  //eslint-disable-next-line
+                  RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(
+                    this.state.appEmail
+                  ) ||
                   this.state.appURL ||
                   !this.state.appEmail
                 }
