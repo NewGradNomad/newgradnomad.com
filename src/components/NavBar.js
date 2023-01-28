@@ -35,10 +35,10 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link className="post-job" href="#postJob">
+              <Nav.Link className="post-job" href="/PostAJob">
                 Post a Job
               </Nav.Link>
-              <Nav.Link className="nav-links" href="./About">
+              <Nav.Link className="nav-links" href="/About">
                 About
               </Nav.Link>
               <Nav.Link className="nav-links" onClick={newsletterShow}>
