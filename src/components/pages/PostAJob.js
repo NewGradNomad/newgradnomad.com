@@ -1,6 +1,5 @@
 import "../../style/About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import InputGroup from "react-bootstrap/InputGroup";
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -8,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import "../../style/PostAJob.css";
 
 function handleFormData(event) {
-  event.preventDefault();
+  event.preventDefault(); //stops page from reloading
 
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
@@ -45,6 +44,13 @@ export default class PostAJob extends Component {
             <Form.Group className="mb-3" controlId="companyName">
               <Form.Label className="">
                 <b>Company Name</b>
+                <Form.Text
+                  hidden={this.state.companyName}
+                  className="form-text"
+                  style={{ color: "red" }}
+                >
+                  &ensp;* Required: Please fill out.
+                </Form.Text>
               </Form.Label>
               <Form.Control
                 required
@@ -54,15 +60,24 @@ export default class PostAJob extends Component {
                 onChange={this.handleChange}
                 value={this.state.companyName}
               />
-              <Form.Text className="form-text">
-                * Your company's brand name without business entities
-              </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - Your company's brand name without business entities
+                </Form.Text>
+              </Container>
             </Form.Group>
 
             <Form.Group className="mb-2" controlId="positionName">
               <Form.Label>
                 <b>Position</b>
               </Form.Label>
+              <Form.Text
+                hidden={this.state.positionName && this.state.positionType}
+                className="form-text"
+                style={{ color: "red" }}
+              >
+                &ensp;* Required: Please fill out name and type.
+              </Form.Text>
               <Form.Control
                 required
                 type="text"
@@ -71,11 +86,12 @@ export default class PostAJob extends Component {
                 onChange={this.handleChange}
                 value={this.state.positionName}
               />
-
-              <Form.Text className="form-text">
-                * Write terms like "Associate Software Engineer" or "Social
-                Media Manager" or "Business Analyst"
-              </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - Write terms like "Associate Software Engineer" or "Social
+                  Media Manager" or "Business Analyst"
+                </Form.Text>
+              </Container>
             </Form.Group>
             <Form.Group className="mb-3" controlId="positionType">
               <Form.Control
@@ -86,15 +102,24 @@ export default class PostAJob extends Component {
                 onChange={this.handleChange}
                 value={this.state.positionType}
               />
-              <Form.Text className="form-text">
-                * Specify full-time, part-time, etc...
-              </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - Specify full-time, part-time, etc...
+                </Form.Text>
+              </Container>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="primaryTag">
               <Form.Label className="">
                 <b>Primary Tag</b>
               </Form.Label>
+              <Form.Text
+                hidden={this.state.primaryTag}
+                className="form-text"
+                style={{ color: "red" }}
+              >
+                &ensp;* Required: Please fill out.
+              </Form.Text>
               <Form.Control
                 required
                 type="text"
@@ -103,15 +128,24 @@ export default class PostAJob extends Component {
                 onChange={this.handleChange}
                 value={this.state.primaryTag}
               />
-              <Form.Text className="form-text">
-                * Main function of specified job
-              </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - Main function of specified job
+                </Form.Text>
+              </Container>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="keywords">
               <Form.Label className="">
                 <b>Keywords</b>
               </Form.Label>
+              <Form.Text
+                hidden={this.state.keywords}
+                className="form-text"
+                style={{ color: "red" }}
+              >
+                &ensp;* Required: Please fill out.
+              </Form.Text>
               <Form.Control
                 required
                 type="text"
@@ -120,9 +154,11 @@ export default class PostAJob extends Component {
                 onChange={this.handleChange}
                 value={this.state.keywords}
               />
-              <Form.Text className="form-text">
-                * Main function of specified job
-              </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - Main function of specified job
+                </Form.Text>
+              </Container>
             </Form.Group>
 
             <Form.Label className="section-title">
@@ -184,6 +220,14 @@ export default class PostAJob extends Component {
               <b>Job Details</b>
             </Form.Label>
 
+            <Form.Text
+              hidden={this.state.appURL || this.state.appEmail}
+              className="form-text"
+              style={{ color: "red" }}
+            >
+              &ensp;* Required: Please choose either email or URL.
+            </Form.Text>
+
             <Form.Group className="mb-3" controlId="appURL">
               <Form.Label className="">
                 <b>Application URL</b>
@@ -193,13 +237,16 @@ export default class PostAJob extends Component {
                 type="text"
                 placeholder="https://"
                 name="appURL"
+                disabled={this.state.appEmail}
                 onChange={this.handleChange}
                 value={this.state.appURL}
               />
-              <Form.Text className="form-text">
-                * This is the job link applicants will be forwarded to in order
-                to apply top your job
-              </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - This is the job link applicants will be forwarded to in
+                  order to apply top your job
+                </Form.Text>
+              </Container>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="appEmail">
@@ -208,21 +255,45 @@ export default class PostAJob extends Component {
               </Form.Label>
               <Form.Control
                 required
-                type="text"
-                placeholder="..."
+                type="email"
+                placeholder="name@example.com"
                 name="appEmail"
+                disabled={this.state.appURL}
+                //pattern="[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+.)[A-Za-z]{2,4}$"
                 onChange={this.handleChange}
                 value={this.state.appEmail}
               />
-              <Form.Text className="form-text">
-                * Applicant is routed to this email if no application url is
-                provided!
+              <Form.Text
+                hidden={
+                  RegExp(
+                    "[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+.)[A-Za-z]{2,4}$"
+                  ).test(this.state.appEmail) ||
+                  this.state.appURL ||
+                  !this.state.appEmail
+                }
+                className="form-text"
+                style={{ color: "red" }}
+              >
+                &ensp;Please provide a valid email.<br></br>
               </Form.Text>
+              <Container>
+                <Form.Text className="form-text">
+                  - Applicant is routed to this email if no application url is
+                  provided!
+                </Form.Text>
+              </Container>
             </Form.Group>
 
             <Form.Label className="">
               <b>Job Description</b>
             </Form.Label>
+            <Form.Text
+              hidden={this.state.jobDesc}
+              className="form-text"
+              style={{ color: "red" }}
+            >
+              &ensp;* Required: Please fill out.
+            </Form.Text>
             <Form.Group controlId="jobDesc">
               <Form.Control
                 as="textarea"
@@ -244,7 +315,10 @@ export default class PostAJob extends Component {
                 !this.state.positionType ||
                 !this.state.primaryTag ||
                 !this.state.keywords ||
-                (!this.state.appURL && !this.state.appEmail) ||
+                !(
+                  (this.state.appURL && !this.state.appEmail) ||
+                  (!this.state.appURL && this.state.appEmail)
+                ) ||
                 !this.state.jobDesc
               }
             >
