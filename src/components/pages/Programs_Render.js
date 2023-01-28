@@ -5,6 +5,7 @@ import JSON_data from "./programs_data.json";
 import { useState } from "react";
 import { FormControl } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import NewGraduatePrograms from "../../style/NewGraduatePrograms.css"
 
 // Programs_Render() fetches Programs.js's table to then be rendered here via search
 function Programs_Render() {
@@ -56,6 +57,9 @@ function Programs_Render() {
           </Button>
           <Button value={"Internet & Software"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Internet & Software
+          </Button>
+          <Button value={""} className="button mx-2 mb-3" onClick={(e) => setQuery(e.target.value)}>
+            Reset
           </Button>
         </Container>
 
