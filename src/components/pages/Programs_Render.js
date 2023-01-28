@@ -58,6 +58,12 @@ function Programs_Render() {
           <Button value={"Internet & Software"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Internet & Software
           </Button>
+          <Button value={"Insurance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+            Insurance
+          </Button>
+          <Button value={"Finance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+            Finance
+          </Button>
           <Button value={""} className="button mx-2 mb-3" onClick={(e) => setQuery(e.target.value)}>
             Reset
           </Button>
