@@ -23,7 +23,7 @@ function HeroSection() {
           variant="light"
           href="/Programs_Render"
         >
-          Programs
+          New Grad Programs
         </Button>
       </Container>
     </>

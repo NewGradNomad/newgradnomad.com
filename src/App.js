@@ -13,6 +13,7 @@ import About from "./components/pages/About";
 import Programs from "./components/pages/Programs";
 import Programs_Render from "./components/pages/Programs_Render";
 import PostAJob from "./components/pages/PostAJob";
+import NotFound from "./components/pages/NotFound";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/Programs" element={<Programs />} />
           <Route path="/Programs_Render" element={<Programs_Render />} />
           <Route path="/PostAJob" element={<PostAJob />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
