@@ -12,7 +12,7 @@ function handleFormData(event) {
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
   const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
-  //console.log(formDataAsJsonStrings);
+  console.log(formDataAsJsonStrings);
 }
 
 export default class PostAJob extends Component {
@@ -25,12 +25,34 @@ export default class PostAJob extends Component {
     appURL: "",
     appEmail: "",
     jobDesc: "",
+    price:"",
   };
 
   handleChange = (e) => {
     const { value, name } = e.target;
     this.setState({ [name]: value });
   };
+
+  // compute the total price of the job posting
+  computePrice = () =>{
+    let sum = 0;
+    if(this.state.support == "on"){
+      sum+=79;
+    }
+    if(this.state.highlightPost == "on"){
+      sum+=39;
+    }
+    if(this.state.pinPost24hr == "on"){
+      sum+=99;
+    }
+    if(this.state.pinPost1wk == "on"){
+      sum+=199;
+    }
+    if(this.state.pinPost1mnth == "on"){
+      sum+=349;
+    }
+    console.log(sum);
+  }
 
   render() {
     return (
@@ -323,7 +345,8 @@ export default class PostAJob extends Component {
                 !this.state.jobDesc
               }
             >
-              <b>Checkout Job Posting</b>
+              {/* append price to end of checkout button */}
+              <b>Checkout Job Posting <span name="price" onChange={this.handleChange}>$</span></b>
             </Button>
           </form>
         </Container>
