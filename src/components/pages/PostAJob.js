@@ -45,7 +45,7 @@ export default class PostAJob extends Component {
     } else {
       this.setState({ [name]: "on" }, () => this.computePrice());
     }
-    console.log(value);
+    //console.log(value);
   };
 
   // compute the total price of the job posting
