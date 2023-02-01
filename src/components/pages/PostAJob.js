@@ -12,8 +12,14 @@ function handleFormData(event) {
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
   const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
-  //console.log(formDataAsJsonStrings);
+  console.log(formDataAsJsonStrings);
 }
+const standardListingPrice = 150;
+const supportPrice = 79;
+const highlightPostPrice = 39;
+const pinPost24hrPrice = 99;
+const pinPost1wkPrice = 199;
+const pinPost1mthPrice = 349;
 
 export default class PostAJob extends Component {
   state = {
@@ -30,7 +36,7 @@ export default class PostAJob extends Component {
     pinPost24hr: "off",
     pinPost1wk: "off",
     pinPost1mnth: "off",
-    totalCost: 150,
+    totalCost: standardListingPrice,
   };
 
   handleChange = (e) => {
@@ -50,22 +56,22 @@ export default class PostAJob extends Component {
 
   // compute the total price of the job posting
   computePrice = () => {
-    let sum = 150;
+    let sum = standardListingPrice;
     //console.log(this.state.support);
     if (this.state.support === "on") {
-      sum += 79;
+      sum += supportPrice;
     }
     if (this.state.highlightPost === "on") {
-      sum += 39;
+      sum += highlightPostPrice;
     }
     if (this.state.pinPost24hr === "on") {
-      sum += 99;
+      sum += pinPost24hrPrice;
     }
     if (this.state.pinPost1wk === "on") {
-      sum += 199;
+      sum += pinPost1wkPrice;
     }
     if (this.state.pinPost1mnth === "on") {
-      sum += 349;
+      sum += pinPost1mthPrice;
     }
     this.setState({ totalCost: sum });
   };
@@ -209,7 +215,7 @@ export default class PostAJob extends Component {
                 checked
                 readOnly
                 type="checkbox"
-                label="Basic Job Posting ($150)"
+                label={"Basic Job Posting ($" + standardListingPrice + ")"}
                 name="basicPosting"
               />
             </Form.Group>
@@ -217,7 +223,11 @@ export default class PostAJob extends Component {
             <Form.Group className="mb-3" controlId="support">
               <Form.Check
                 type="checkbox"
-                label="Receive 24-hour support for your job posting (+$79)"
+                label={
+                  "Receive 24-hour support for your job posting (+$" +
+                  supportPrice +
+                  ")"
+                }
                 name="support"
                 onChange={this.handleCheckBox}
                 value={this.state.support}
@@ -227,7 +237,11 @@ export default class PostAJob extends Component {
             <Form.Group className="mb-3" controlId="highlightPost">
               <Form.Check
                 type="checkbox"
-                label="Highlight your job post in orange 🍊 to gain more views (+$39)"
+                label={
+                  "Highlight your job post in orange 🍊 to gain more views (+$" +
+                  highlightPostPrice +
+                  ")"
+                }
                 name="highlightPost"
                 onChange={this.handleCheckBox}
                 value={this.state.highlightPost}
@@ -237,7 +251,11 @@ export default class PostAJob extends Component {
             <Form.Group className="mb-3" controlId="pinPost24hr">
               <Form.Check
                 type="checkbox"
-                label="Pin post on front page for 24 hours (+$99)"
+                label={
+                  "Pin post on front page for 24 hours (+$" +
+                  pinPost24hrPrice +
+                  ")"
+                }
                 name="pinPost24hr"
                 onChange={this.handleCheckBox}
                 value={this.state.pinPost24hr}
@@ -247,7 +265,11 @@ export default class PostAJob extends Component {
             <Form.Group className="mb-3" controlId="pinPost1wk">
               <Form.Check
                 type="checkbox"
-                label="Pin post on front page for 1 week (+$199)"
+                label={
+                  "Pin post on front page for 1 week (+$" +
+                  pinPost1wkPrice +
+                  ")"
+                }
                 name="pinPost1wk"
                 onChange={this.handleCheckBox}
                 value={this.state.pinPost1wk}
@@ -257,7 +279,11 @@ export default class PostAJob extends Component {
             <Form.Group className="mb-3" controlId="pinPost1mnth">
               <Form.Check
                 type="checkbox"
-                label="Pin post on front page for 1 month (+$349)"
+                label={
+                  "Pin post on front page for 1 month (+$" +
+                  pinPost1mthPrice +
+                  ")"
+                }
                 name="pinPost1mnth"
                 onChange={this.handleCheckBox}
                 value={this.state.pinPost1mnth}
@@ -351,6 +377,17 @@ export default class PostAJob extends Component {
                 style={{ height: "150px" }}
                 onChange={this.handleChange}
                 value={this.state.jobDesc}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="totalCost">
+              <Form.Check
+                required
+                checked
+                hidden
+                readOnly
+                name="totalCost"
+                value={this.state.totalCost}
               />
             </Form.Group>
 
