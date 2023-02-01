@@ -33,16 +33,22 @@ function NavBar() {
         <Container fluid>
           <Navbar.Brand href="/">newgradnomad.com</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav flex-column align-items-end">
             <Nav className="ms-auto">
-              <Nav.Link className="post-job" href="/PostAJob">
-                Post a Job
+              <Nav.Link className="nav-links" href="/PostAJob">
+                <Button className="button">
+                  <strong>Post a Job</strong>
+                </Button>
               </Nav.Link>
               <Nav.Link className="nav-links" href="/About">
-                About
+                <Button className="button-hide">
+                  <strong>About</strong>
+                </Button>
               </Nav.Link>
               <Nav.Link className="nav-links" onClick={newsletterShow}>
-                Sign up
+                <Button className="button-hide">
+                  <strong>Sign Up</strong>                
+                </Button>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
