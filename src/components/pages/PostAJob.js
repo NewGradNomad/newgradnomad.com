@@ -12,7 +12,7 @@ function handleFormData(event) {
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
   const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
-  console.log(formDataAsJsonStrings);
+  //console.log(formDataAsJsonStrings);
 }
 
 export default class PostAJob extends Component {
@@ -25,7 +25,12 @@ export default class PostAJob extends Component {
     appURL: "",
     appEmail: "",
     jobDesc: "",
-    price:"",
+    support: "off",
+    highlightPost: "off",
+    pinPost24hr: "off",
+    pinPost1wk: "off",
+    pinPost1mnth: "off",
+    totalCost: 150,
   };
 
   handleChange = (e) => {
@@ -33,26 +38,37 @@ export default class PostAJob extends Component {
     this.setState({ [name]: value });
   };
 
+  handleCheckBox = (e) => {
+    const { value, name } = e.target;
+    if (value === "on") {
+      this.setState({ [name]: "off" }, () => this.computePrice());
+    } else {
+      this.setState({ [name]: "on" }, () => this.computePrice());
+    }
+    //console.log(value);
+  };
+
   // compute the total price of the job posting
-  computePrice = () =>{
-    let sum = 0;
-    if(this.state.support == "on"){
-      sum+=79;
+  computePrice = () => {
+    let sum = 150;
+    //console.log(this.state.support);
+    if (this.state.support === "on") {
+      sum += 79;
     }
-    if(this.state.highlightPost == "on"){
-      sum+=39;
+    if (this.state.highlightPost === "on") {
+      sum += 39;
     }
-    if(this.state.pinPost24hr == "on"){
-      sum+=99;
+    if (this.state.pinPost24hr === "on") {
+      sum += 99;
     }
-    if(this.state.pinPost1wk == "on"){
-      sum+=199;
+    if (this.state.pinPost1wk === "on") {
+      sum += 199;
     }
-    if(this.state.pinPost1mnth == "on"){
-      sum+=349;
+    if (this.state.pinPost1mnth === "on") {
+      sum += 349;
     }
-    console.log(sum);
-  }
+    this.setState({ totalCost: sum });
+  };
 
   render() {
     return (
@@ -203,6 +219,8 @@ export default class PostAJob extends Component {
                 type="checkbox"
                 label="Receive 24-hour support for your job posting (+$79)"
                 name="support"
+                onChange={this.handleCheckBox}
+                value={this.state.support}
               />
             </Form.Group>
 
@@ -211,6 +229,8 @@ export default class PostAJob extends Component {
                 type="checkbox"
                 label="Highlight your job post in orange 🍊 to gain more views (+$39)"
                 name="highlightPost"
+                onChange={this.handleCheckBox}
+                value={this.state.highlightPost}
               />
             </Form.Group>
 
@@ -219,6 +239,8 @@ export default class PostAJob extends Component {
                 type="checkbox"
                 label="Pin post on front page for 24 hours (+$99)"
                 name="pinPost24hr"
+                onChange={this.handleCheckBox}
+                value={this.state.pinPost24hr}
               />
             </Form.Group>
 
@@ -227,6 +249,8 @@ export default class PostAJob extends Component {
                 type="checkbox"
                 label="Pin post on front page for 1 week (+$199)"
                 name="pinPost1wk"
+                onChange={this.handleCheckBox}
+                value={this.state.pinPost1wk}
               />
             </Form.Group>
 
@@ -235,6 +259,8 @@ export default class PostAJob extends Component {
                 type="checkbox"
                 label="Pin post on front page for 1 month (+$349)"
                 name="pinPost1mnth"
+                onChange={this.handleCheckBox}
+                value={this.state.pinPost1mnth}
               />
             </Form.Group>
 
@@ -346,7 +372,7 @@ export default class PostAJob extends Component {
               }
             >
               {/* append price to end of checkout button */}
-              <b>Checkout Job Posting <span name="price" onChange={this.handleChange}>$</span></b>
+              <b>Checkout Job Posting ${this.state.totalCost}</b>
             </Button>
           </form>
         </Container>
