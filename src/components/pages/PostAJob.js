@@ -12,7 +12,7 @@ function handleFormData(event) {
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
   const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
-  console.log(formDataAsJsonStrings);
+  //console.log(formDataAsJsonStrings);
 }
 const standardListingPrice = 150;
 const supportPrice = 79;
