@@ -35,7 +35,7 @@ export default class PostAJob extends Component {
     highlightPost: "off",
     pinPost24hr: "off",
     pinPost1wk: "off",
-    pinPost1mnth: "off",
+    pinPost1mth: "off",
     totalCost: standardListingPrice,
   };
 
@@ -70,7 +70,7 @@ export default class PostAJob extends Component {
     if (this.state.pinPost1wk === "on") {
       sum += pinPost1wkPrice;
     }
-    if (this.state.pinPost1mnth === "on") {
+    if (this.state.pinPost1mth === "on") {
       sum += pinPost1mthPrice;
     }
     this.setState({ totalCost: sum });
@@ -259,6 +259,10 @@ export default class PostAJob extends Component {
                 name="pinPost24hr"
                 onChange={this.handleCheckBox}
                 value={this.state.pinPost24hr}
+                disabled={
+                  this.state.pinPost1wk === "on" ||
+                  this.state.pinPost1mth === "on"
+                }
               />
             </Form.Group>
 
@@ -273,10 +277,14 @@ export default class PostAJob extends Component {
                 name="pinPost1wk"
                 onChange={this.handleCheckBox}
                 value={this.state.pinPost1wk}
+                disabled={
+                  this.state.pinPost1mth === "on" ||
+                  this.state.pinPost24hr === "on"
+                }
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="pinPost1mnth">
+            <Form.Group className="mb-3" controlId="pinPost1mth">
               <Form.Check
                 type="checkbox"
                 label={
@@ -284,9 +292,13 @@ export default class PostAJob extends Component {
                   pinPost1mthPrice +
                   ")"
                 }
-                name="pinPost1mnth"
+                name="pinPost1mth"
                 onChange={this.handleCheckBox}
-                value={this.state.pinPost1mnth}
+                value={this.state.pinPost1mth}
+                disabled={
+                  this.state.pinPost1wk === "on" ||
+                  this.state.pinPost24hr === "on"
+                }
               />
             </Form.Group>
 
