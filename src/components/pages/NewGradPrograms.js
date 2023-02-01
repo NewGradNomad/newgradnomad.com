@@ -29,7 +29,7 @@ function Programs_Render() {
         <div className="mt-4 text-center">
           <h1>New Graduate Programs</h1>
           <p>
-            Lot's of companies have programs completely dedicated to new
+            Lot's of companies have programs completely dedicated to the development of new
             graduates. You can search for the programs below but do note that
             not all these programs are remote.{" "}
           </p>
@@ -49,20 +49,23 @@ function Programs_Render() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <Container className="text-center">
+          <Button value={"Internet & Software"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+            Internet & Software
+          </Button>
+          <Button value={"Finance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+            Finance
+          </Button>
           <Button value={"Technology & Engineering"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Technology & Engineering
           </Button>
-          <Button value={"Aerospace"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
-            Aerospace
-          </Button>
-          <Button value={"Internet & Software"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
-            Internet & Software
+          <Button value={"Healthcare"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+            Healthcare
           </Button>
           <Button value={"Insurance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Insurance
           </Button>
-          <Button value={"Finance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
-            Finance
+          <Button value={"Aerospace"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+            Aerospace
           </Button>
           <Button value={""} className="button mx-2 mb-3" onClick={(e) => setQuery(e.target.value)}>
             Reset
