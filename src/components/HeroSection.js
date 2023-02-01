@@ -21,7 +21,7 @@ function HeroSection() {
         <Button
           className=" btn btn-lg mx-1 mb-3"
           variant="light"
-          href="/Programs_Render"
+          href="/NewGradPrograms"
         >
           New Grad Programs
         </Button>

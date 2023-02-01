@@ -11,7 +11,7 @@ import {
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Programs from "./components/pages/Programs";
-import Programs_Render from "./components/pages/Programs_Render";
+import NewGradPrograms from "./components/pages/NewGradPrograms";
 import PostAJob from "./components/pages/PostAJob";
 import NotFound from "./components/pages/NotFound";
 
@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/Programs" element={<Programs />} />
-          <Route path="/Programs_Render" element={<Programs_Render />} />
+          <Route path="/NewGradPrograms" element={<NewGradPrograms />} />
           <Route path="/PostAJob" element={<PostAJob />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
