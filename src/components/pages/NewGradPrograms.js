@@ -140,13 +140,13 @@ function Programs_Render() {
               <InputGroup hasValidation>
                 <Form.Control
                   required
-                  type="program_name"
+                  type="company_name"
                   placeholder="Company"
                   pattern=""
                   autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid email.
+                  Please provide a valid company name.
                 </Form.Control.Feedback>
               </InputGroup>
 
@@ -160,7 +160,7 @@ function Programs_Render() {
                   autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid email.
+                  Please provide a valid program name.
                 </Form.Control.Feedback>
               </InputGroup>
 
@@ -174,7 +174,7 @@ function Programs_Render() {
                   autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid email.
+                  Please provide a valid name.
                 </Form.Control.Feedback>
               </InputGroup>
               
@@ -187,7 +187,7 @@ function Programs_Render() {
                   autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid email.
+                  Please provide a valid Card Number.
                 </Form.Control.Feedback>
               </InputGroup>
 
@@ -200,7 +200,7 @@ function Programs_Render() {
                   autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid email.
+                  Please provide a valid expiration date in MM / YY.
                 </Form.Control.Feedback>
               </InputGroup>
 
@@ -208,21 +208,20 @@ function Programs_Render() {
                 <Form.Control
                   required
                   type="cvv"
-                  placeholder="CVC"
+                  placeholder="CVV"
                   pattern=""
                   autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid email.
+                  Please provide a valid card verification value.
                 </Form.Control.Feedback>
               </InputGroup>
               
-
               <Modal.Footer>
                 <Button variant="secondary" onClick={newsletterClose}>
                   Cancel
                 </Button>
-                <Button variant="primary" type="submit">
+                <Button className="button" variant="secondary" type="submit" style={{ backgroundColor: "#ed6f26 !important", borderColor: "#ed6f26 !important"  }} >
                   Submit
                 </Button>
               </Modal.Footer>
