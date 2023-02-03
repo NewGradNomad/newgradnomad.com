@@ -5,6 +5,9 @@ import JSON_data from "./programs_data.json";
 import { useState } from "react";
 import { FormControl } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Modal from "react-bootstrap/Modal";
 import NewGraduatePrograms from "../../style/NewGraduatePrograms.css"
 
 // Programs_Render() fetches Programs.js's table to then be rendered here via search
@@ -23,6 +26,25 @@ function Programs_Render() {
     );
   };
 
+  // modal
+  const [show, setShow] = useState(false);
+
+  const newsletterClose = () => setShow(false);
+  const newsletterShow = () => setShow(true);
+
+  const [validated, setValidated] = useState(false);
+  const newsletterSubmit = (event) => {
+    const inpObj = event.currentTarget;
+    if (inpObj.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (inpObj.checkValidity() === true) {
+      setShow(false);
+    }
+
+    setValidated(true);
+  };
+
   return (
     <>
       <Container>
@@ -34,7 +56,7 @@ function Programs_Render() {
             not all these programs are remote.{" "}
           </p>
           <p>
-            <a href="#form" style={{ color: "#ed6f26" }}>
+            <a href="#form" style={{ color: "#ed6f26" }} onClick={newsletterShow}>
               {" "}
               Want your program featured on this page? Click here.{" "}
             </a>
@@ -80,6 +102,134 @@ function Programs_Render() {
 
         <Programs data={search(JSON_data)} />
       </Container>
+
+      <Modal show={show} onHide={newsletterClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Highlight your program!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Your program will be highlight on the top of this page for users to see first no matter what.
+          </p>
+          <p id="error"></p>
+          <Form
+            noValidate
+            validated={validated}
+            onSubmit={newsletterSubmit}
+            action="/#emailList"
+          >
+            <Form.Group
+              className="mb-3"
+              controlId="newsletterForm.ControlInput"
+            >
+              <Form.Label>Email address</Form.Label>
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="email"
+                  placeholder="name@example.com"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+              
+              <Form.Label>Company Name</Form.Label>
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="program_name"
+                  placeholder="Company"
+                  pattern=""
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+
+              <Form.Label>Program Name</Form.Label>
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="program_name"
+                  placeholder="Leadership Development Program"
+                  pattern=""
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+
+              <Form.Label>Payment information</Form.Label>
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="name_on_card"
+                  placeholder="Name on card"
+                  pattern=""
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+              
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="card_number"
+                  placeholder="Card Number"
+                  pattern=""
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="exp"
+                  placeholder="MM / YY"
+                  pattern=""
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+
+              <InputGroup hasValidation>
+                <Form.Control
+                  required
+                  type="cvv"
+                  placeholder="CVC"
+                  pattern=""
+                  autoFocus
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid email.
+                </Form.Control.Feedback>
+              </InputGroup>
+              
+
+              <Modal.Footer>
+                <Button variant="secondary" onClick={newsletterClose}>
+                  Cancel
+                </Button>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </Modal.Footer>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </>
   );
 }
