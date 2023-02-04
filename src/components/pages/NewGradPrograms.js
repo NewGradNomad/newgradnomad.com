@@ -136,7 +136,7 @@ function Programs_Render() {
                 </Form.Control.Feedback>
               </InputGroup>
               
-              <Form.Label>Company Name</Form.Label>
+              <Form.Label className="mt-2">Company Name</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
                   required
@@ -150,7 +150,7 @@ function Programs_Render() {
                 </Form.Control.Feedback>
               </InputGroup>
 
-              <Form.Label>Program Name</Form.Label>
+              <Form.Label className="mt-2">Program Name</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
                   required
@@ -164,7 +164,7 @@ function Programs_Render() {
                 </Form.Control.Feedback>
               </InputGroup>
 
-              <Form.Label>Payment information</Form.Label>
+              <Form.Label className="mt-2">Payment information</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
                   required
@@ -178,7 +178,7 @@ function Programs_Render() {
                 </Form.Control.Feedback>
               </InputGroup>
               
-              <InputGroup hasValidation>
+              <InputGroup hasValidation className="mt-2">
                 <Form.Control
                   required
                   type="card_number"
@@ -191,7 +191,7 @@ function Programs_Render() {
                 </Form.Control.Feedback>
               </InputGroup>
 
-              <InputGroup hasValidation>
+              <InputGroup hasValidation className="mt-2">
                 <Form.Control
                   required
                   type="exp"
@@ -204,7 +204,7 @@ function Programs_Render() {
                 </Form.Control.Feedback>
               </InputGroup>
 
-              <InputGroup hasValidation>
+              <InputGroup hasValidation className="mt-2">
                 <Form.Control
                   required
                   type="cvv"
