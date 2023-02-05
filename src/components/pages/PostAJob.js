@@ -173,7 +173,7 @@ export default class PostAJob extends Component {
                 value={this.state.positionType}
                 onChange={this.handleSelect}
                 options={positionTypeOptions}
-                placeholder={'Position Type...'}
+                placeholder={"Position Type..."}
               />
               <Container>
                 <Form.Text className="form-text">
