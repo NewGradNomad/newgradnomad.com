@@ -5,12 +5,14 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../../style/PostAJob.css";
+import Select from "react-select";
 
 function handleFormData(event) {
   event.preventDefault(); //stops page from reloading
 
   const formData = new FormData(event.target);
   const formValues = Object.fromEntries(formData.entries());
+  formValues.keywords = formData.getAll("keywords");
   const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
   //console.log(formDataAsJsonStrings);
 }
@@ -20,6 +22,27 @@ const highlightPostPrice = 39;
 const pinPost24hrPrice = 99;
 const pinPost1wkPrice = 199;
 const pinPost1mthPrice = 349;
+
+
+const maxKeywords = 4;
+const positionTypeOptions = [
+  { value: "Full Time", label: "Full Time" },
+  { value: "Part Time", label: "Part Time" },
+];
+
+const primaryTagOptions = [
+  { value: "Software Development", label: "Software Development" },
+  { value: "Customer Support", label: "Customer Support" },
+  { value: "Marketing", label: "Marketing" },
+];
+
+const keywordOptions = [
+  { value: "Developer", label: "Developer" },
+  { value: "Engineer", label: "Engineer" },
+  { value: "Full Stack", label: "Full Stack" },
+  { value: "Finance", label: "Finance" },
+  { value: "Accounting", label: "Accounting" },
+];
 
 export default class PostAJob extends Component {
   state = {
@@ -37,6 +60,15 @@ export default class PostAJob extends Component {
     pinPost1wk: "off",
     pinPost1mth: "off",
     totalCost: standardListingPrice,
+  };
+
+  handleSelect = (value, action) => {
+    if (value.length <= maxKeywords || action.name !== "keywords") {
+      this.setState({
+        [action.name]: value,
+      });
+    }
+    //console.log(value.length);
   };
 
   handleChange = (e) => {
@@ -138,13 +170,12 @@ export default class PostAJob extends Component {
               </Container>
             </Form.Group>
             <Form.Group className="mb-3" controlId="positionType">
-              <Form.Control
-                required
-                type="text"
-                placeholder="Enter Position Type"
+              <Select
                 name="positionType"
-                onChange={this.handleChange}
                 value={this.state.positionType}
+                onChange={this.handleSelect}
+                options={positionTypeOptions}
+                placeholder={"Position Type..."}
               />
               <Container>
                 <Form.Text className="form-text">
@@ -164,13 +195,11 @@ export default class PostAJob extends Component {
               >
                 &ensp;* Required: Please fill out.
               </Form.Text>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Enter Primary Tag"
+              <Select
                 name="primaryTag"
-                onChange={this.handleChange}
                 value={this.state.primaryTag}
+                onChange={this.handleSelect}
+                options={primaryTagOptions}
               />
               <Container>
                 <Form.Text className="form-text">
@@ -188,15 +217,21 @@ export default class PostAJob extends Component {
                 className="form-text"
                 style={{ color: "red" }}
               >
-                &ensp;* Required: Please fill out.
+                &ensp;* Add keywords that pertain to the jobs purpose.
               </Form.Text>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Enter Keywords"
+              <Form.Text
+                hidden={!(this.state.keywords.length === maxKeywords)}
+                className="form-text"
+                style={{ color: "green" }}
+              >
+                &ensp;* You reached the four keyword limit.
+              </Form.Text>
+              <Select
+                isMulti
                 name="keywords"
-                onChange={this.handleChange}
                 value={this.state.keywords}
+                onChange={this.handleSelect}
+                options={keywordOptions}
               />
               <Container>
                 <Form.Text className="form-text">
