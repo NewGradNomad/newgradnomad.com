@@ -23,6 +23,8 @@ const pinPost24hrPrice = 99;
 const pinPost1wkPrice = 199;
 const pinPost1mthPrice = 349;
 
+
+const maxKeywords = 4;
 const positionTypeOptions = [
   { value: "Full Time", label: "Full Time" },
   { value: "Part Time", label: "Part Time" },
@@ -61,7 +63,7 @@ export default class PostAJob extends Component {
   };
 
   handleSelect = (value, action) => {
-    if (value.length <= 4 || action.name !== "keywords") {
+    if (value.length <= maxKeywords || action.name !== "keywords") {
       this.setState({
         [action.name]: value,
       });
@@ -218,7 +220,7 @@ export default class PostAJob extends Component {
                 &ensp;* Add keywords that pertain to the jobs purpose.
               </Form.Text>
               <Form.Text
-                hidden={!(this.state.keywords.length === 4)}
+                hidden={!(this.state.keywords.length === maxKeywords)}
                 className="form-text"
                 style={{ color: "green" }}
               >
