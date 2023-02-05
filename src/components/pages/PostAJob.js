@@ -28,12 +28,19 @@ const maxKeywords = 4;
 const positionTypeOptions = [
   { value: "Full Time", label: "Full Time" },
   { value: "Part Time", label: "Part Time" },
+  { value: "Contract", label: "Contract" },
 ];
 
 const primaryTagOptions = [
   { value: "Software Development", label: "Software Development" },
   { value: "Customer Support", label: "Customer Support" },
   { value: "Marketing", label: "Marketing" },
+  { value: "Sales", label: "Sales" },
+  { value: "IT", label: "IT" },
+  { value: "Writing", label: "Writing" },
+  { value: "Human Resources", label: "Human Resources" },
+  { value: "Design", label: "Design" },
+  { value: "Recruiter", label: "Recruiter" },
 ];
 
 const keywordOptions = [
@@ -42,6 +49,12 @@ const keywordOptions = [
   { value: "Full Stack", label: "Full Stack" },
   { value: "Finance", label: "Finance" },
   { value: "Accounting", label: "Accounting" },
+  { value: "UX/UI", label: "UX/UI" },
+  { value: "Technical", label: "Technical" },
+  { value: "Non Technical", label: "Non Technical" },
+  { value: "Manager", label: "Manager" },
+  { value: "Crpyto", label: "Crpyto" },
+  { value: "Testing", label: "Testing" },
 ];
 
 export default class PostAJob extends Component {
