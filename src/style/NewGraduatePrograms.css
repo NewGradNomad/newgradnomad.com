@@ -1,8 +1,12 @@
-.button{
-    background-color: #ed6f26 !important;
-    border-color: #ed6f26 !important;
+.button {
+  background-color: #ed6f26 !important;
+  border-color: #ed6f26 !important;
 }
-
-table{
+@media screen and (max-device-width: 400px) {
+  table {
     font-size: small;
+  }
+  button {
+    font-size: medium !important;
+  }
 }
