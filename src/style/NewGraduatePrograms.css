@@ -2,7 +2,7 @@
   background-color: #ed6f26 !important;
   border-color: #ed6f26 !important;
 }
-@media screen and (max-device-width: 400px) {
+@media screen and (max-device-width: 500px) {
   table {
     font-size: small;
   }
