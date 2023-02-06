@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 
 const ProgramsTable = ( {data} ) => {
     return (
-        <Table striped bordered hover className='text-center'>
+        <Table responsive striped bordered hover className='text-center'>
             <thead>
             <tr>
                 <th>Company Name</th>
@@ -14,9 +14,9 @@ const ProgramsTable = ( {data} ) => {
             <tbody>
             {data.map((item) => (
                 <tr key={item.id}>
-                    <td width="33.33%">{item.company_name}</td>
-                    <td width="33.33%">{item.program_name}</td>
-                    <td width="33.33%">{item.industry}</td>
+                    <td col p-3>{item.company_name}</td>
+                    <td col p-3>{item.program_name}</td>
+                    <td col p-3>{item.industry}</td>
                 </tr>
             ))}
             </tbody>
