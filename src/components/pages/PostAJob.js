@@ -248,7 +248,7 @@ export default class PostAJob extends Component {
               />
               <Container>
                 <Form.Text className="form-text">
-                  - Main function of specified job
+                  - Add keywords that pertain to the jobs purpose
                 </Form.Text>
               </Container>
             </Form.Group>
