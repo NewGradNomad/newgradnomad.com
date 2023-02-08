@@ -109,7 +109,7 @@ function Programs_Render() {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Your program will be highlight on the top of this page for users to see first no matter what.
+            Your program will be highlighted on the top of this page for users to see first no matter what.
           </p>
           <p id="error"></p>
           <Form

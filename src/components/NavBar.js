@@ -45,6 +45,11 @@ function NavBar() {
                   <strong>About</strong>
                 </Button>
               </Nav.Link>
+              <Nav.Link className="nav-links" target="_blank" href="https://discord.gg/khfQcbtHw8">
+                <Button className="button-hide">
+                  <strong>Discord</strong>
+                </Button>
+              </Nav.Link>
               <Nav.Link className="nav-links" onClick={newsletterShow}>
                 <Button className="button-hide">
                   <strong>Sign Up</strong>                
