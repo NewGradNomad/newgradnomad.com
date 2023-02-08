@@ -31,7 +31,11 @@ function NavBar() {
     <>
       <Navbar className="green-nav" collapseOnSelect variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/">newgradnomad.com</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <Button className="button-hide">
+              <strong>newgradnomad.com</strong>
+            </Button>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav flex-column align-items-end">
             <Nav className="ms-auto">
@@ -45,14 +49,18 @@ function NavBar() {
                   <strong>About</strong>
                 </Button>
               </Nav.Link>
-              <Nav.Link className="nav-links" target="_blank" href="https://discord.gg/khfQcbtHw8">
+              <Nav.Link
+                className="nav-links"
+                target="_blank"
+                href="https://discord.gg/khfQcbtHw8"
+              >
                 <Button className="button-hide">
                   <strong>Discord</strong>
                 </Button>
               </Nav.Link>
               <Nav.Link className="nav-links" onClick={newsletterShow}>
                 <Button className="button-hide">
-                  <strong>Sign Up</strong>                
+                  <strong>Sign Up</strong>
                 </Button>
               </Nav.Link>
             </Nav>
