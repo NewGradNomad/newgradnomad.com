@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
-      - uses: ...
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
