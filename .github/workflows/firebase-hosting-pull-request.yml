@@ -5,8 +5,10 @@ name: Deploy to Firebase Hosting on PR
 "on": pull_request
 env:
   CI: false
+  
 jobs:
   build_and_preview:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
