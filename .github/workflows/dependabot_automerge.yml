@@ -1,0 +1,14 @@
+### .github/workflows/dependabot_automerge.yml
+### This workflow now has no secrets and a read-only token
+name: Dependabot Automerge
+on:
+  pull_request_target
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - uses: ...
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
