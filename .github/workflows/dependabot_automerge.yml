@@ -1,27 +1,22 @@
-name: "Dependabot Automerge - Action"
-
+### .github/workflows/dependabot_automerge.yml
+### This workflow has access to secrets and a read-write token
+name: Dependabot Automerge
 on:
-  pull_request:
+  workflow_run:
+    workflows: ["Dependabot PR Check"]
+    types: 
+      - completed
 
+permissions:
+  contents: write
+  pull-requests: write
+  
 jobs:
-  worker:
+  do-stuff:
     runs-on: ubuntu-latest
-
-    if: github.actor == 'dependabot[bot]'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: automerge
-        uses: actions/github-script@0.2.0
+      - uses: actions/checkout@v2
         with:
-          script: |
-            github.pullRequests.createReview({
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              pull_number: context.payload.pull_request.number,
-              event: 'APPROVE'
-            })
-            github.pullRequests.merge({
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              pull_number: context.payload.pull_request.number
-            })
-          github-token: ${{github.token}}
+          ref: ${{ github.event.pull_request.head.sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
