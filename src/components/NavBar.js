@@ -61,7 +61,7 @@ function NavBar() {
               </Nav.Link>
               <Nav.Link className="nav-links" onClick={newsletterShow}>
                 <Button className="button-hide">
-                  <strong>Sign Up</strong>
+                  <strong>Newsletter</strong>
                 </Button>
               </Nav.Link>
             </Nav>
