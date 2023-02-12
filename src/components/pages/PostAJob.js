@@ -53,7 +53,7 @@ const keywordOptions = [
   { value: "Technical", label: "Technical" },
   { value: "Non Technical", label: "Non Technical" },
   { value: "Manager", label: "Manager" },
-  { value: "Crpyto", label: "Crpyto" },
+  { value: "Crypto", label: "Crpyto" },
   { value: "Testing", label: "Testing" },
 ];
 
