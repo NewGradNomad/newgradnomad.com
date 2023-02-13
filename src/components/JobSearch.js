@@ -38,14 +38,18 @@ export default class JobSearch extends Component{
             <h4>Search Remote Jobs</h4>
           </Form.Label>
         <Row>
-          <Col lg={10}>
+          <Col lg={9}>
+          <div style={{width: '300px'}}>
           <Select
                   name="positionType"
                   value={this.positionType}
                   onChange={this.handleSelect}
                   options={categories}
                   placeholder={"Categories"}
+                  menuPlacement="auto"
+                  menuPosition="fixed"
                 />
+          </div>
           </Col>
               <Col lg={2} >
                 <Button className='button'><strong>Submit</strong></Button>
