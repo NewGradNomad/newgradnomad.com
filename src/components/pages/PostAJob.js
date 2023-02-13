@@ -400,7 +400,7 @@ export default class PostAJob extends Component {
               <Form.Text
                 hidden={
                   //eslint-disable-next-line
-                  RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(
+                  RegExp(/^\w+([\.-]?(?=(\w+))\1)*@\w+([\.-]?(?=(\w+))\1)*(\.\w{2,3})+$/).test(
                     this.state.appEmail
                   ) ||
                   this.state.appURL ||
