@@ -48,11 +48,12 @@ export default class JobSearch extends Component{
                   placeholder={"Categories"}
                   menuPlacement="auto"
                   menuPosition="fixed"
+                  className='mt-2'
                 />
           </div>
           </Col>
               <Col lg={2} >
-                <Button className='button'><strong>Submit</strong></Button>
+                <Button className='button mt-2'><strong>Submit</strong></Button>
               </Col>
             </Row>
           </Form>
