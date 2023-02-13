@@ -7,7 +7,7 @@ export default function About() {
     <>
       <Container>
         <h1 className="text-center mt-4">Our Mission</h1>
-        <p className="p-font text-center mt-2 mr-4 ml-4">
+        <p className="p-font text-center mt-2 mr-4 ml-4" id='p-font'>
           NewGradNomad’s mission is to connect recent college graduates with
           meaningful remote work opportunities that allow them to utilize their
           skills and knowledge, while also providing them with the flexibility
@@ -18,18 +18,10 @@ export default function About() {
         </p>
         <h1 className="text-center mt-4">Why?</h1>
         <p className=" p-font text-center mt-2 mr-4 ml-4">
-          Ever since the pandemic, remote work has been on the rise for
-          entry-level, mid-level, and senior-level talent. However, job boards
-          websites and mobile applications are most often flooded with remote
-          opportunities for more experienced talent with multiple years of
-          experience. The goal of NewGradNomad is to make it easier for recently
-          graduated individuals to find remote jobs with a seamless application
-          process. Remote work allows individuals to save time commuting and
-          more money. Gen Z and young professionals joining the full-time
-          workforce do not want to be shackled down by a company’s office.
-          Travel and working on one's own time are much more valued than onsite
-          productivity and NewGradNomad is going to help be the bridge in
-          attaining that independent corporate remote experience.
+          The pandemic has led to a surge in remote work across all levels of talent, from entry-level to senior-level. 
+          However, job board platforms are much more frequently saturated with remote opportunities for more seasoned professionals with extensive experience.
+          NewGradNomad aims to simplify the process of finding remote jobs for recent graduates, by providing a plethora of catered remote jobs of all types. 
+          All while cultivating a community of remote-minded young professionals. 
         </p>
       </Container>
     </>
