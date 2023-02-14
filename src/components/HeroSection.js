@@ -7,7 +7,7 @@ function HeroSection() {
     <>
       <Container fluid className="text-center hero-container">
         <h1 className="fs-1 text-center">newgradnomad.com</h1>
-        <p className="fs-4 text-center">
+        <p className="fs-4 lead text-center">
           The best place for new graduates & entry-level talent to find remote
           work.
         </p>
