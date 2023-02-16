@@ -239,7 +239,7 @@ export default class PostAJob extends Component {
                 className="form-text"
                 style={{ color: "green" }}
               >
-                &ensp;* You reached the four keyword limit.
+                &ensp;* You reached the {maxKeywords} keyword limit.
               </Form.Text>
               <Select
                 isMulti
