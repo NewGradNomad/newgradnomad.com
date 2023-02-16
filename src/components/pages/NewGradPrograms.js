@@ -143,7 +143,6 @@ function Programs_Render() {
                   type="company_name"
                   placeholder="Company"
                   pattern=""
-                  autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid company name.
@@ -157,7 +156,6 @@ function Programs_Render() {
                   type="program_name"
                   placeholder="Leadership Development Program"
                   pattern=""
-                  autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid program name.
@@ -171,7 +169,6 @@ function Programs_Render() {
                   type="name_on_card"
                   placeholder="Name on card"
                   pattern=""
-                  autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid name.
@@ -184,7 +181,6 @@ function Programs_Render() {
                   type="card_number"
                   placeholder="Card Number"
                   pattern=""
-                  autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid Card Number.
@@ -197,7 +193,6 @@ function Programs_Render() {
                   type="exp"
                   placeholder="MM / YY"
                   pattern=""
-                  autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid expiration date in MM / YY.
@@ -210,7 +205,6 @@ function Programs_Render() {
                   type="cvv"
                   placeholder="CVV"
                   pattern=""
-                  autoFocus
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid card verification value.
