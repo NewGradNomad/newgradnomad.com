@@ -1,6 +1,6 @@
 import "../../style/About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Component } from "react";
+import React, { Component, useCallback } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -121,6 +121,7 @@ export default class PostAJob extends Component {
     this.setState({ totalCost: sum });
   };
 
+
   render() {
     return (
       <>
@@ -143,6 +144,7 @@ export default class PostAJob extends Component {
               </Form.Label>
               <Form.Control
                 required
+                autoFocus
                 type="text"
                 placeholder="Enter Company Name"
                 name="companyName"
