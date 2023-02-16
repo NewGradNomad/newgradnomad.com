@@ -23,7 +23,7 @@ function ToggleCard() {
                 <Card.Title>Job Posting Title</Card.Title>
               </Col>
               <Col xs="auto">
-                <Button className="button"><strong>Apply</strong></Button>
+                <Button className="button mx-2"><strong>Apply</strong></Button>
                 {/* possibly get rid of button below */}
             <Button onClick={toggleText} className="button-green">
               <strong>{showText ? "Hide Desc." : "View Desc."}</strong>
