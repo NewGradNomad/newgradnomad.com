@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import "../style/JobSearch.css";
 
-const maxKeywords = 4;
 const categories = [
   { value: "Software Development", label: "Software Development" },
   { value: "Customer Support", label: "Customer Support" },
@@ -20,13 +19,14 @@ const categories = [
 ];
 
 export default class JobSearch extends Component {
+  state = {
+    positionType: "",
+  };
+
   handleSelect = (value, action) => {
-    if (value.length <= maxKeywords || action.name !== "keywords") {
       this.setState({
         [action.name]: value,
       });
-    }
-    //console.log(value.length);
   };
   render() {
     return (
@@ -46,6 +46,7 @@ export default class JobSearch extends Component {
                 className="mt-2"
                 style={{ maxWidth: "300px" }}
               />
+              
             </Col>
             <Col md={2} sm={12} lg={1}>
               <Button className="mt-2 button" type="submit">
