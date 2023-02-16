@@ -24,7 +24,7 @@ const pinPost1wkPrice = 199;
 const pinPost1mthPrice = 349;
 
 
-const maxKeywords = 4;
+const maxKeywords = 2;
 const positionTypeOptions = [
   { value: "Full Time", label: "Full Time" },
   { value: "Part Time", label: "Part Time" },
