@@ -16,7 +16,7 @@ function ToggleCard() {
   return (
     <>
       <Container>
-        <Card className="mt-4" onClick={toggleText} id='cardy'>
+        <Card className="mt-4" id='cardy'>
           <Card.Body>
             <Row>
               <Col>
@@ -25,18 +25,20 @@ function ToggleCard() {
               <Col xs="auto">
                 <Button className="button mx-2"><strong>Apply</strong></Button>
                 {/* possibly get rid of button below */}
-            <Button onClick={toggleText} className="button-green">
+            {/* <Button onClick={toggleText} className="button-green">
               <strong>{showText ? "Hide Desc." : "View Desc."}</strong>
-            </Button>
+            </Button> */}
               </Col>
             </Row>
-            <Card.Subtitle className="text-muted">
-              Company Name
-            </Card.Subtitle>
 
-            {showText && (
-              <Card.Text className="mt-2">This text will toggle on and off</Card.Text>
-            )}
+            <div className="onClickWrapper" onClick={toggleText} >
+              <Card.Subtitle className="text-muted">
+                Company Name
+              </Card.Subtitle>
+
+              {showText && (
+                <Card.Text className="mt-2">This text will toggle on and off</Card.Text>
+              )}
 
             <div className="mt-3">
               <Card.Link>
@@ -60,6 +62,10 @@ function ToggleCard() {
                 </Button>
               </Card.Link>
             </div>
+
+            </div>
+
+            
           </Card.Body>
         </Card>
       </Container>
