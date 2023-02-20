@@ -16,7 +16,7 @@ function ToggleCard() {
   return (
     <>
       <Container>
-        <Card className="mt-4" id='cardy'>
+        <Card className="mt-4">
           <Card.Body>
             <Row>
               <Col>
@@ -31,7 +31,7 @@ function ToggleCard() {
               </Col>
             </Row>
 
-            <div className="onClickWrapper" onClick={toggleText} >
+            <div className="onClickWrapper" onClick={toggleText}  id='cardy'>
               <Card.Subtitle className="text-muted">
                 Company Name
               </Card.Subtitle>
