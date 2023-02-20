@@ -5,6 +5,7 @@ import './JobPostings.css'
 import { useEffect, useState } from "react";
 import StandardPosting from "./StandardPosting";
 import PinnedPosting from "./PinnedPosting";
+import OrangePosting from "./OrangePosting";
 
 export default class JobSearch extends Component {
     render(){
@@ -13,7 +14,7 @@ export default class JobSearch extends Component {
                 {/* this page will be used to render job postings, StandardPosting.js is where the "Job Posting" lives per se */}
                 <PinnedPosting/>
                 <StandardPosting/>
-                <StandardPosting/>
+                <OrangePosting/>
             </>
         );
     }

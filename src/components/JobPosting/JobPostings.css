@@ -10,3 +10,7 @@
 #cardy{
     cursor: pointer;
 }
+
+.orangeCard {
+    background-color: #ed6f26 !important;
+}
