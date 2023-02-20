@@ -50,7 +50,7 @@ export default class JobSearch extends Component {
             </Col>
             <Col md={2} sm={12} lg={1}>
               <Button className="mt-2 button" type="submit">
-                Submit
+                <strong>Submit</strong>
               </Button>
             </Col>
           </Row>
