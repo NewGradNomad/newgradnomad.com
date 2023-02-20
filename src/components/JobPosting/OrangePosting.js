@@ -16,14 +16,14 @@ function ToggleCard() {
   return (
     <>
       <Container>
-        <Card className="mt-4" id='cardy'>
+        <Card className="orangeCard mt-4">
           <Card.Body>
             <Row>
               <Col>
-                <Card.Title>Job Posting Title</Card.Title>
+                <Card.Title style={{color:"white"}}>Job Posting Title</Card.Title>
               </Col>
               <Col xs="auto">
-                <Button className="button mx-2"><strong>Apply</strong></Button>
+                <Button className="button-green mx-2" href="https://github.com/NewGradNomad" target="_blank"><strong>Apply</strong></Button>
                 {/* possibly get rid of button below */}
             {/* <Button onClick={toggleText} className="button-green">
               <strong>{showText ? "Hide Desc." : "View Desc."}</strong>
@@ -31,18 +31,18 @@ function ToggleCard() {
               </Col>
             </Row>
 
-            <div className="onClickWrapper" onClick={toggleText} >
-              <Card.Subtitle className="text-muted">
+            <div className="onClickWrapper" onClick={toggleText}  id='cardy'>
+              <Card.Subtitle style={{color:"white"}}>
                 Company Name
               </Card.Subtitle>
 
               {showText && (
-                <Card.Text className="mt-2">This text will toggle on and off</Card.Text>
+                <Card.Text className="mt-2" style={{color:"white"}}>This text will toggle on and off</Card.Text>
               )}
 
             <div className="mt-3">
               <Card.Link>
-                <Button className="button">
+                <Button className="button-green">
                   <strong>Category</strong>
                 </Button>
               </Card.Link>
