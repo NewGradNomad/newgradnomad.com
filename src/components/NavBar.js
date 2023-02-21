@@ -57,7 +57,7 @@ function NavBar() {
               <DropdownButton
                 title={<strong>Community</strong>}
                 variant="button-hide"
-                className="nav-links"
+                className="nav-links mt-auto mb-auto"
               >
                 <Dropdown.Item
                   target="_blank"
