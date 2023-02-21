@@ -1,0 +1,27 @@
+categories (collection)
+- categories_id (document)
+  - name
+  - jobs (subcollection)
+    - job_id (document)
+      - title
+      - location
+      - salary
+      - description
+      - skills (array)
+      - requirements (array)
+      - posted_by (reference to job poster)
+
+
+job_seekers (collection)
+- job_seeker_id (document)
+  - name
+  - email
+  - password
+  - skills (array)
+  - experience
+  - education
+  - applications (subcollection)
+    - application_id (document)
+      - job (reference to job)
+      - status (applied, rejected, accepted)
+      - cover_letter
