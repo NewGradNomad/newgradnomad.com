@@ -48,12 +48,6 @@ function NavBar() {
                   <strong>Home</strong>
                 </Button>
               </Nav.Link>
-              <Nav.Link className="nav-links" href="/About">
-                <Button className="button-hide">
-                  <strong>About</strong>
-                </Button>
-              </Nav.Link>
-
               <DropdownButton
                 title={<strong>Community</strong>}
                 variant="button-hide"
@@ -68,50 +62,17 @@ function NavBar() {
                     <strong>Discord</strong>
                   </Button>
                 </Dropdown.Item>
-                {/* <Dropdown.Divider /> */}
-                <Dropdown.Item
-                  onClick={newsletterShow}
-                  //className="nav-links"
-                >
+                <Dropdown.Item className="nav-links" onClick={newsletterShow}>
                   <Button className="button-hide">
                     <strong>Newsletter</strong>
                   </Button>
                 </Dropdown.Item>
               </DropdownButton>
-              {/* <NavDropdown
-                className="nav-links"
-                title="Community"
-                id="collasible-nav-dropdown"
-              >
-                <NavDropdown.Item
-                  target="_blank"
-                  href="https://discord.gg/khfQcbtHw8"
-                  className="nav-links"
-                >
-                  Discord
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  className="nav-links"
-                  onClick={newsletterShow}
-                >
-                  Newsletter
-                </NavDropdown.Item>
-              </NavDropdown> */}
-
-              {/* <Nav.Link
-                className="nav-links"
-                target="_blank"
-                href="https://discord.gg/khfQcbtHw8"
-              >
+              <Nav.Link className="nav-links" href="/About">
                 <Button className="button-hide">
-                  <strong>Discord</strong>
+                  <strong>About</strong>
                 </Button>
               </Nav.Link>
-              <Nav.Link className="nav-links" onClick={newsletterShow}>
-                <Button className="button-hide">
-                  <strong>Newsletter</strong>
-                </Button>
-              </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
