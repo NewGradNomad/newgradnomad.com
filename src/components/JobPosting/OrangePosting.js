@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Row, Col } from "react-bootstrap";
+import { BsFillCaretDownFill } from "react-icons/bs";
 import './JobPostings.css';
 
 
@@ -37,7 +38,7 @@ function ToggleCard() {
               </Card.Subtitle>
 
               <Card.Text className="mt-3" onClick={toggleText} id='cardy' style={{fontStyle:'italic', fontWeight: 'bold', textDecorationLine: 'underline', color:'white'}}>
-              {showText ? "Hide Job Description" : "View Job Description"}
+              <BsFillCaretDownFill/>{showText ? "Hide Job Description" : "View Job Description"}
               </Card.Text>
 
               {showText && (
