@@ -6,6 +6,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Nav, Navbar } from "react-bootstrap";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import React, { useState } from "react";
 
 function NavBar() {
@@ -45,23 +48,29 @@ function NavBar() {
                   <strong>Home</strong>
                 </Button>
               </Nav.Link>
+              <DropdownButton
+                title={<strong>Community</strong>}
+                variant="button-hide"
+                className="button-hide nav-links mt-auto mb-auto"
+              >
+                <Dropdown.Item
+                  target="_blank"
+                  href="https://discord.gg/khfQcbtHw8"
+                  className="nav-links"
+                >
+                  <Button className="button-hide">
+                    <strong>Discord</strong>
+                  </Button>
+                </Dropdown.Item>
+                <Dropdown.Item className="nav-links" onClick={newsletterShow}>
+                  <Button className="button-hide">
+                    <strong>Newsletter</strong>
+                  </Button>
+                </Dropdown.Item>
+              </DropdownButton>
               <Nav.Link className="nav-links" href="/About">
                 <Button className="button-hide">
                   <strong>About</strong>
-                </Button>
-              </Nav.Link>
-              <Nav.Link
-                className="nav-links"
-                target="_blank"
-                href="https://discord.gg/khfQcbtHw8"
-              >
-                <Button className="button-hide">
-                  <strong>Discord</strong>
-                </Button>
-              </Nav.Link>
-              <Nav.Link className="nav-links" onClick={newsletterShow}>
-                <Button className="button-hide">
-                  <strong>Newsletter</strong>
                 </Button>
               </Nav.Link>
             </Nav>
