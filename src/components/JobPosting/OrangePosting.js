@@ -31,13 +31,17 @@ function ToggleCard() {
               </Col>
             </Row>
 
-            <div className="onClickWrapper" onClick={toggleText}  id='cardy'>
+            <div className="onClickWrapper">
               <Card.Subtitle style={{color:"white"}}>
                 Company Name
               </Card.Subtitle>
 
+              <Card.Text className="mt-3" onClick={toggleText} id='cardy' style={{fontStyle:'italic', fontWeight: 'bold', textDecorationLine: 'underline', color:'white'}}>
+              {showText ? "Hide Job Description" : "View Job Description"}
+              </Card.Text>
+
               {showText && (
-                <Card.Text className="mt-2" style={{color:"white"}}>This text will toggle on and off</Card.Text>
+                <Card.Text className="mt-2" style={{color:'white'}}>This text will toggle on and off</Card.Text>
               )}
 
             <div className="mt-3">

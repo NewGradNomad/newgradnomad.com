@@ -34,10 +34,14 @@ function PinnedPosting() {
               </Col>
             </Row>
 
-            <div className="onClickWrapper" onClick={toggleText}  id='cardy'>
+            <div className="onClickWrapper">
               <Card.Subtitle className="text-muted">
                 Company Name
               </Card.Subtitle>
+
+              <Card.Text className="mt-3" onClick={toggleText} id='cardy' style={{fontStyle:'italic', fontWeight: 'bold', textDecorationLine: 'underline', color:'#449175'}}>
+              {showText ? "Hide Job Description" : "View Job Description"}
+              </Card.Text>
 
               {showText && (
                 <Card.Text className="mt-2">This text will toggle on and off</Card.Text>
