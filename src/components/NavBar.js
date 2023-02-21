@@ -6,6 +6,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Nav, Navbar } from "react-bootstrap";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import React, { useState } from "react";
 
 function NavBar() {
@@ -50,7 +53,49 @@ function NavBar() {
                   <strong>About</strong>
                 </Button>
               </Nav.Link>
-              <Nav.Link
+
+              <DropdownButton
+                title={<strong>Community</strong>}
+                variant="button-hide"
+                className="nav-links"
+              >
+                <Dropdown.Item
+                  target="_blank"
+                  href="https://discord.gg/khfQcbtHw8"
+                  className="nav-links"
+                >
+                  <Button className="button-hide">
+                    <strong>Discord</strong>
+                  </Button>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={newsletterShow} className="nav-links">
+                  <Button className="button-hide">
+                    <strong>Newsletter</strong>
+                  </Button>
+                </Dropdown.Item>
+              </DropdownButton>
+              {/* <NavDropdown
+                className="nav-links"
+                title="Community"
+                id="collasible-nav-dropdown"
+              >
+                <NavDropdown.Item
+                  target="_blank"
+                  href="https://discord.gg/khfQcbtHw8"
+                  className="nav-links"
+                >
+                  Discord
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  className="nav-links"
+                  onClick={newsletterShow}
+                >
+                  Newsletter
+                </NavDropdown.Item>
+              </NavDropdown> */}
+
+              {/* <Nav.Link
                 className="nav-links"
                 target="_blank"
                 href="https://discord.gg/khfQcbtHw8"
@@ -63,7 +108,7 @@ function NavBar() {
                 <Button className="button-hide">
                   <strong>Newsletter</strong>
                 </Button>
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
