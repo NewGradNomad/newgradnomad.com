@@ -71,31 +71,31 @@ function Programs_Render() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <Container className="text-center">
-          <Button value={"Internet & Software"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Internet & Software"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Internet & Software
           </Button>
-          <Button value={"Finance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Finance"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Finance
           </Button>
-          <Button value={"Technology & Engineering"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Technology & Engineering"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Technology & Engineering
           </Button>
-          <Button value={"Healthcare"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Healthcare"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Healthcare
           </Button>
-          <Button value={"Retail"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Retail"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Retail
           </Button>
-          <Button value={"Media"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Media"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Media
           </Button>
-          <Button value={"Insurance"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Insurance"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Insurance
           </Button>
-          <Button value={"Aerospace"} className="mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={"Aerospace"} className="adjust-size mx-2 mb-3" variant="secondary" onClick={(e) => setQuery(e.target.value)}>
             Aerospace
           </Button>
-          <Button value={""} className="button mx-2 mb-3" onClick={(e) => setQuery(e.target.value)}>
+          <Button value={""} className="button adjust-size mx-2 mb-3" onClick={(e) => setQuery(e.target.value)}>
             Reset
           </Button>
         </Container>

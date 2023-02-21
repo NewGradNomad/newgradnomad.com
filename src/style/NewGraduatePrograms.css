@@ -9,6 +9,10 @@
   button {
     font-size: medium !important;
   }
+
+  .adjust-size{
+    font-size: small !important;
+  }
 }
 @media screen and (max-device-width: 370px) {
     table {
@@ -17,4 +21,4 @@
     button {
       font-size: x-small !important;
     }
-  }
+}
