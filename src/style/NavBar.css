@@ -14,7 +14,7 @@
   max-height: 45px;
 }
 .nav-links {
-  background-color: #ed262600 !important;
+  background-color: transparent !important;
   border-color: #ed6f2600 !important;
   border-radius: 10px;
   
@@ -26,4 +26,20 @@
 .button-hide{
   background-color:transparent !important;
   border-color: transparent !important;
+  border-width: 0px !important;
+  color: white !important;
+}
+.button-hide .btn{
+  background-color:transparent !important;
+  border-color: transparent !important;
+  border-width: 0px !important;
+  color: white !important;
+}
+.dropdown-menu {
+  --bs-dropdown-bg: #449175 !important;
+  --bs-dropdown-border-width: 0px !important;
+}
+
+.btn {
+
 }

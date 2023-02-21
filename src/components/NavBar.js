@@ -57,7 +57,7 @@ function NavBar() {
               <DropdownButton
                 title={<strong>Community</strong>}
                 variant="button-hide"
-                className="nav-links mt-auto mb-auto"
+                className="button-hide nav-links mt-auto mb-auto"
               >
                 <Dropdown.Item
                   target="_blank"
@@ -68,8 +68,11 @@ function NavBar() {
                     <strong>Discord</strong>
                   </Button>
                 </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={newsletterShow} className="nav-links">
+                {/* <Dropdown.Divider /> */}
+                <Dropdown.Item
+                  onClick={newsletterShow}
+                  //className="nav-links"
+                >
                   <Button className="button-hide">
                     <strong>Newsletter</strong>
                   </Button>
