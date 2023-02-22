@@ -1,27 +1,31 @@
 categories (collection)
-- categories_id (document)
-  - name
-  - jobs (subcollection)
-    - job_id (document)
-      - title
-      - location
-      - salary
-      - description
-      - skills (array)
-      - requirements (array)
-      - posted_by (reference to job poster)
+  |- category_1 (document)
+  |   |- id: "cat1"
+  |   |- name: "Category 1"
+  |
+  |- category_2 (document)
+  |   |- id: "cat2"
+  |   |- name: "Category 2"
+  |
+  |- category_3 (document)
+      |- id: "cat3"
+      |- name: "Category 3"
 
-
-job_seekers (collection)
-- job_seeker_id (document)
-  - name
-  - email
-  - password
-  - skills (array)
-  - experience
-  - education
-  - applications (subcollection)
-    - application_id (document)
-      - job (reference to job)
-      - status (applied, rejected, accepted)
-      - cover_letter
+jobs (collection)
+  |- job_1 (document)
+  |   |- id: "job1"
+  |   |- title: "Job 1"
+  |   |- description: "This is job 1"
+  |   |- category_id: "cat1"
+  |
+  |- job_2 (document)
+  |   |- id: "job2"
+  |   |- title: "Job 2"
+  |   |- description: "This is job 2"
+  |   |- category_id: "cat2"
+  |
+  |- job_3 (document)
+      |- id: "job3"
+      |- title: "Job 3"
+      |- description: "This is job 3"
+      |- category_id: "cat3"
