@@ -232,7 +232,7 @@ export default class PostAJob extends Component {
                 className="form-text"
                 style={{ color: "red" }}
               >
-                &ensp;* Add keywords that pertain to the jobs purpose.
+                &ensp;* Required: Max of {maxKeywords}.
               </Form.Text>
               <Form.Text
                 hidden={!(this.state.keywords.length === maxKeywords)}

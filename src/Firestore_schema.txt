@@ -1,0 +1,31 @@
+categories (collection)
+  |- category_1 (document)
+  |   |- id: "cat1"
+  |   |- name: "Category 1"
+  |
+  |- category_2 (document)
+  |   |- id: "cat2"
+  |   |- name: "Category 2"
+  |
+  |- category_3 (document)
+      |- id: "cat3"
+      |- name: "Category 3"
+
+jobs (collection)
+  |- job_1 (document)
+  |   |- id: "job1"
+  |   |- title: "Job 1"
+  |   |- description: "This is job 1"
+  |   |- category_id: "cat1"
+  |
+  |- job_2 (document)
+  |   |- id: "job2"
+  |   |- title: "Job 2"
+  |   |- description: "This is job 2"
+  |   |- category_id: "cat2"
+  |
+  |- job_3 (document)
+      |- id: "job3"
+      |- title: "Job 3"
+      |- description: "This is job 3"
+      |- category_id: "cat3"
