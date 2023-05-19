@@ -14,6 +14,7 @@ import Programs from "./components/pages/Programs";
 import NewGradPrograms from "./components/pages/NewGradPrograms";
 import PostAJob from "./components/pages/PostAJob";
 import NotFound from "./components/pages/NotFound";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }
