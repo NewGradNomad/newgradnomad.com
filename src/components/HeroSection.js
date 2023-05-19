@@ -6,7 +6,7 @@ function HeroSection() {
   return (
     <>
       <Container fluid className="text-center hero-container">
-        <h1 className="fs-1 text-center">newgradnomad.com</h1>
+        <h1 className="fs-1 text-center">Find Remote New Grad Jobs</h1>
         <p className="fs-4 lead text-center">
           The best place for new graduates & entry-level talent to find remote
           work.
