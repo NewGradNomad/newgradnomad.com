@@ -14,3 +14,16 @@
 .orangeCard {
     background-color: #ed6f26 !important;
 }
+
+.tag-wrap{
+    display: block;
+    margin-top: 1rem;
+}
+
+
+@media screen and (min-width: 500px){
+    .tag-wrap{
+        display: inline;
+        margin-left: 1rem;
+    }
+}
