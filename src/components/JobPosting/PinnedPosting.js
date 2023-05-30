@@ -48,12 +48,14 @@ function PinnedPosting() {
                 <Card.Text className="mt-2">This text will toggle on and off</Card.Text>
               )}
 
-            <div className="mt-3">
+<div className="mt-3">
               <Card.Link>
                 <Button className="button">
                   <strong>Category</strong>
                 </Button>
               </Card.Link>
+            
+          <div className="tag-wrap" >
               <Card.Link>
                 <Button variant="secondary" className="button-tag" size="sm">
                   Tag 1
@@ -69,6 +71,7 @@ function PinnedPosting() {
                   Tag 3
                 </Button>
               </Card.Link>
+              </div>
             </div>
 
             </div>

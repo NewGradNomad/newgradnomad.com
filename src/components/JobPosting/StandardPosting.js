@@ -51,6 +51,8 @@ function ToggleCard() {
                   <strong>Category</strong>
                 </Button>
               </Card.Link>
+            
+          <div className="tag-wrap" >
               <Card.Link>
                 <Button variant="secondary" className="button-tag" size="sm">
                   Tag 1
@@ -66,6 +68,7 @@ function ToggleCard() {
                   Tag 3
                 </Button>
               </Card.Link>
+              </div>
             </div>
 
             </div>
