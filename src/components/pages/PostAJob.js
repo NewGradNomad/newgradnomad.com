@@ -6,16 +6,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../../style/PostAJob.css";
 import Select from "react-select";
+import Checkout from "./Checkout";
+import { useNavigate } from "react-router-dom";
 
-const handleFormData = (event) => {
-  event.preventDefault(); //stops page from reloading
-
-  const formData = new FormData(event.target);
-  const formValues = Object.fromEntries(formData.entries());
-  formValues.keywords = formData.getAll("keywords");
-  const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
-  console.log(formDataAsJsonStrings);
-};
 
 const standardListingPrice = 150;
 const supportPrice = 79;
@@ -57,7 +50,7 @@ const keywordOptions = [
   { value: "Testing", label: "Testing" },
 ];
 
-const PostAJob = () => {
+function PostAJob() {
   const [state, setState] = useState({
     companyName: "",
     positionName: "",
@@ -199,6 +192,18 @@ const PostAJob = () => {
       ...prevState,
       totalCost: sum,
     }));
+  };
+
+ const navigate = useNavigate();
+ const handleFormData = (event) => {
+    event.preventDefault(); //stops page from reloading
+  
+    const formData = new FormData(event.target);
+    const formValues = Object.fromEntries(formData.entries());
+    formValues.keywords = formData.getAll("keywords");
+    //const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
+    //console.log(formDataAsJsonStrings);
+    navigate("/Checkout",{state: formValues});
   };
 
   return (
