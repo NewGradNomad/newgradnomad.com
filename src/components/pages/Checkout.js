@@ -9,16 +9,17 @@ import Form from "react-bootstrap/Form";
 
 export default function Checkout() {
   const formValues = useLocation();
-  const getFormData = () => {
+
+  const processFormData = (event) => {
+    event.preventDefault(); //stops page from reloading
     const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
     console.log(formDataAsJsonStrings);
   };
-  getFormData();
 
   return (
     <>
       <Container className="gray-form mt-4 px-3">
-        <Form noValidate>
+        <Form noValidate onSubmit={processFormData}>
           <Form.Label className="section-title mt-3">
             <b>Checkout</b>
           </Form.Label>
@@ -36,7 +37,11 @@ export default function Checkout() {
             />
           </Form.Group>
 
-          <Button>
+          <Button
+            className="mt-4 mb-4 checkout-Button form-control"
+            variant="primary"
+            type="submit"
+          >
             <b>Place Order</b>
           </Button>
         </Form>
