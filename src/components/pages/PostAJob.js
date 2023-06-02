@@ -9,7 +9,6 @@ import Select from "react-select";
 import Checkout from "./Checkout";
 import { useNavigate } from "react-router-dom";
 
-
 const standardListingPrice = 150;
 const supportPrice = 79;
 const highlightPostPrice = 39;
@@ -194,16 +193,16 @@ function PostAJob() {
     }));
   };
 
- const navigate = useNavigate();
- const handleFormData = (event) => {
+  const navigate = useNavigate();
+  const handleFormData = (event) => {
     event.preventDefault(); //stops page from reloading
-  
+
     const formData = new FormData(event.target);
     const formValues = Object.fromEntries(formData.entries());
     formValues.keywords = formData.getAll("keywords");
     //const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
     //console.log(formDataAsJsonStrings);
-    navigate("/Checkout",{state: formValues});
+    navigate("/Checkout", { state: formValues });
   };
 
   return (
@@ -469,6 +468,7 @@ function PostAJob() {
               placeholder="name@example.com"
               name="appEmail"
               disabled={state.appURL}
+              //eslint-disable-next-line
               //pattern="[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+.)[A-Za-z]{2,4}$"
               onChange={handleChange}
               value={state.appEmail}
@@ -477,6 +477,7 @@ function PostAJob() {
               hidden={
                 //eslint-disable-next-line
                 RegExp(
+                  //eslint-disable-next-line
                   /^\w+([\.-]?(?=(\w+))\1)*@\w+([\.-]?(?=(\w+))\1)*(\.\w{2,3})+$/
                 ).test(state.appEmail) ||
                 state.appURL ||
@@ -539,7 +540,12 @@ function PostAJob() {
               !state.keywords ||
               !(
                 (state.appURL && !state.appEmail) ||
-                (!state.appURL && state.appEmail)
+                (!state.appURL &&
+                  state.appEmail &&
+                  RegExp(
+                    //eslint-disable-next-line
+                    /^\w+([\.-]?(?=(\w+))\1)*@\w+([\.-]?(?=(\w+))\1)*(\.\w{2,3})+$/
+                  ).test(state.appEmail))
               ) ||
               !state.jobDesc
             }
@@ -551,6 +557,6 @@ function PostAJob() {
       </Container>
     </>
   );
-};
+}
 
 export default PostAJob;
