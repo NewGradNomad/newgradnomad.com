@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Select from "react-select";
@@ -18,44 +18,37 @@ const categories = [
   { value: "Recruiter", label: "Recruiter" },
 ];
 
-export default class JobSearch extends Component {
-  state = {
-    positionType: "",
-  };
+export default function JobSearch() {
+  const [positionType, setPositionType] = useState("");
 
-  handleSelect = (value, action) => {
-      this.setState({
-        [action.name]: value,
-      });
+  const handleSelect = (value, action) => {
+    setPositionType(value);
   };
-  render() {
-    return (
-      <>
-        <Form>
-          <Form.Label className="text-center mt-4" style={{width: "100%"}}>
-            <h4>Search Remote Jobs</h4>
-          </Form.Label>
-          <Row className="d-flex align-items-center justify-content-center mx-2">
-            <Col md={4} sm={12} lg={2}>
-              <Select
-                name="positionType"
-                value={this.positionType}
-                onChange={this.handleSelect}
-                options={categories}
-                placeholder={"Categories"}
-                className="mt-2"
-                style={{ maxWidth: "300px" }}
-              />
-              
-            </Col>
-            <Col md={2} sm={12} lg={1}>
-              <Button className="mt-2 button" type="submit">
-                <strong>Submit</strong>
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </>
-    );
-  }
+  return (
+    <>
+      <Form>
+        <Form.Label className="text-center mt-4" style={{ width: "100%" }}>
+          <h4>Search Remote Jobs</h4>
+        </Form.Label>
+        <Row className="d-flex align-items-center justify-content-center mx-2">
+          <Col md={4} sm={12} lg={2}>
+            <Select
+              name="positionType"
+              value={positionType}
+              onChange={handleSelect}
+              options={categories}
+              placeholder={"Categories"}
+              className="mt-2"
+              style={{ maxWidth: "300px" }}
+            />
+          </Col>
+          <Col md={2} sm={12} lg={1}>
+            <Button className="mt-2 button" type="submit">
+              <strong>Submit</strong>
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </>
+  );
 }

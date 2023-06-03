@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 
 export default function Checkout() {
   const formValues = useLocation();
+  const finalPrice = formValues.state.totalCost;
 
   const processFormData = (event) => {
     event.preventDefault(); //stops page from reloading
