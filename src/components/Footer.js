@@ -4,9 +4,7 @@ function Footer() {
   return (
     <>
       <footer>
-        <p>
           <hr></hr>
-        </p>
       </footer>
     </>
   );
