@@ -137,7 +137,6 @@ function PostAJob() {
       }));
     }
     //computePrice();
-    console.log(newCost);
     setState((prevState) => ({
       ...prevState,
       totalCost: state.totalCost + newCost,
