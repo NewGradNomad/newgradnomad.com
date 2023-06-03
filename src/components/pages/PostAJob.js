@@ -86,37 +86,23 @@ function PostAJob() {
 
   const handleCheckBox = (e) => {
     const { value, name } = e.target;
+    let newCost = 0.0;
     if (value === "on") {
       switch (true) {
         case name === "support":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost - supportPrice,
-          }));
+          newCost -= supportPrice;
           break;
         case name === "highlightPost":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost - highlightPostPrice,
-          }));
+          newCost -= highlightPostPrice;
           break;
         case name === "pinPost24hr":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost - pinPost24hrPrice,
-          }));
+          newCost -= pinPost24hrPrice;
           break;
         case name === "pinPost1wk":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost - pinPost1wkPrice,
-          }));
+          newCost -= pinPost1wkPrice;
           break;
         case name === "pinPost1mth":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost - pinPost1mthPrice,
-          }));
+          newCost -= pinPost1mthPrice;
           break;
         default:
           break;
@@ -128,34 +114,19 @@ function PostAJob() {
     } else {
       switch (true) {
         case name === "support":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost + supportPrice,
-          }));
+          newCost += supportPrice;
           break;
         case name === "highlightPost":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost + highlightPostPrice,
-          }));
+          newCost += highlightPostPrice;
           break;
         case name === "pinPost24hr":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost + pinPost24hrPrice,
-          }));
+          newCost += pinPost24hrPrice;
           break;
         case name === "pinPost1wk":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost + pinPost1wkPrice,
-          }));
+          newCost += pinPost1wkPrice;
           break;
         case name === "pinPost1mth":
-          setState((prevState) => ({
-            ...prevState,
-            totalCost: state.totalCost + pinPost1mthPrice,
-          }));
+          newCost += pinPost1mthPrice;
           break;
         default:
           break;
@@ -166,6 +137,11 @@ function PostAJob() {
       }));
     }
     //computePrice();
+    console.log(newCost);
+    setState((prevState) => ({
+      ...prevState,
+      totalCost: state.totalCost + newCost,
+    }));
   };
 
   // compute the total price of the job posting
