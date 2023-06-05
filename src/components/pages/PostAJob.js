@@ -172,49 +172,6 @@ function PostAJob() {
   const handleFormData = (event) => {
     event.preventDefault(); //stops page from reloading
 
-
-  render() {
-    return (
-      <>
-
-      <Container className="mt-4 px-3 text-center">
-        <h2>Hire New Grads Naturally.</h2>
-        <p className="lead"><b> We aggregates jobs listings from all around the web, but posting your job directly to our site gives top priority to your job posting.</b> </p>
-      </Container>
-
-        <Container className="gray-form mt-4 px-3">
-          <form noValidate onSubmit={handleFormData}>
-            <Form.Label className="section-title mt-3">
-              <b>Getting Started</b>
-            </Form.Label>
-
-            <Form.Group className="mb-3" controlId="companyName">
-              <Form.Label className="">
-                <b>Company Name</b>
-                <Form.Text
-                  hidden={this.state.companyName}
-                  className="form-text"
-                  style={{ color: "red" }}
-                >
-                  &ensp;* Required: Please fill out.
-                </Form.Text>
-              </Form.Label>
-              <Form.Control
-                required
-                autoFocus
-                type="text"
-                placeholder="Enter Company Name"
-                name="companyName"
-                onChange={this.handleChange}
-                value={this.state.companyName}
-              />
-              <Container>
-                <Form.Text className="form-text">
-                  - Your company's brand name without business entities
-                </Form.Text>
-              </Container>
-            </Form.Group>
-
     const formData = new FormData(event.target);
     const formValues = Object.fromEntries(formData.entries());
     formValues.keywords = formData.getAll("keywords");
@@ -222,7 +179,6 @@ function PostAJob() {
     //console.log(formDataAsJsonStrings);
     navigate("/Checkout", { state: formValues });
   };
-
 
   return (
     <>
