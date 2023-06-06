@@ -185,7 +185,7 @@ function PostAJob() {
 
       <Container className="mt-4 px-3 text-center">
         <h2>Hire New Grads Naturally.</h2>
-        <p className="lead"><b> We aggregates jobs listings from all around the web, but posting your job directly to our site gives top priority to your job posting.</b> </p>
+        <p className="lead"><b> We aggregate job listings from all around the web, but posting your job directly to our site gives top priority to your job posting.</b> </p>
       </Container>
 
       <Container className="gray-form mt-4 px-3">
