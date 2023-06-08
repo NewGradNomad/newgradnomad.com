@@ -9,6 +9,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import Home from "./components/pages/Home";
+import Tips from "./components/pages/Tips";
 import About from "./components/pages/About";
 import Programs from "./components/pages/Programs";
 import NewGradPrograms from "./components/pages/NewGradPrograms";
@@ -24,6 +25,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/Tips" exact element={<Tips />} />
           <Route path="/About" element={<About />} />
           <Route path="/Programs" element={<Programs />} />
           <Route path="/NewGradPrograms" element={<NewGradPrograms />} />

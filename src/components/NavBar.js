@@ -43,6 +43,11 @@ function NavBar() {
                   <strong>Post a Job</strong>
                 </Button>
               </Nav.Link>
+              <Nav.Link className="nav-links" href="/Tips">
+                <Button className="button-hide">
+                  <strong>Tips</strong>
+                </Button>
+              </Nav.Link>
               <Nav.Link className="nav-links" href="/">
                 <Button className="button-hide">
                   <strong>Home</strong>
