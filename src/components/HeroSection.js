@@ -18,13 +18,13 @@ function HeroSection() {
         >
           Post a Job
         </Button>
-        <Button
+        {/* <Button
           className=" btn btn-lg mx-1 mb-3"
           variant="light"
           href="/NewGradPrograms"
         >
           New Grad Programs
-        </Button>
+        </Button> */}
       </Container>
     </>
   );

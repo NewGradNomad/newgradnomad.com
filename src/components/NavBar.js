@@ -48,7 +48,7 @@ function NavBar() {
                   <strong>Home</strong>
                 </Button>
               </Nav.Link>
-              <DropdownButton
+              {/* <DropdownButton
                 title={<strong>Community</strong>}
                 variant="button-hide"
                 className="button-hide nav-links mt-auto mb-auto"
@@ -67,7 +67,7 @@ function NavBar() {
                     <strong>Newsletter</strong>
                   </Button>
                 </Dropdown.Item>
-              </DropdownButton>
+              </DropdownButton> */}
               <Nav.Link className="nav-links" href="/About">
                 <Button className="button-hide">
                   <strong>About</strong>

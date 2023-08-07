@@ -352,20 +352,6 @@ function PostAJob() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="highlightPost">
-            <Form.Check
-              type="checkbox"
-              label={
-                "Highlight your job post in orange 🍊 to gain more views (+$" +
-                highlightPostPrice +
-                ")"
-              }
-              name="highlightPost"
-              onChange={handleCheckBox}
-              value={state.highlightPost}
-            />
-          </Form.Group>
-
           <Form.Group className="mb-3" controlId="pinPost24hr">
             <Form.Check
               type="checkbox"
