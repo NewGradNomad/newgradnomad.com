@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Select from "react-select";
 import Button from "react-bootstrap/Button";
@@ -18,15 +18,21 @@ const categories = [
   { value: "Recruiter", label: "Recruiter" },
 ];
 
-export default function JobSearch() {
+export default function JobSearch({ onSearch }) {
   const [positionType, setPositionType] = useState("");
 
-  const handleSelect = (value, action) => {
+  const handleSelect = (value) => {
     setPositionType(value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(positionType?.value || "");
+  };
+
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Label className="text-center mt-4" style={{ width: "100%" }}>
           <h4>Search Remote Jobs</h4>
         </Form.Label>
@@ -39,7 +45,7 @@ export default function JobSearch() {
               options={categories}
               placeholder={"Categories"}
               className="mt-2"
-              style={{ maxWidth: "300px" }}
+              isClearable={true}
             />
           </Col>
           <Col md={2} sm={12} lg={1}>

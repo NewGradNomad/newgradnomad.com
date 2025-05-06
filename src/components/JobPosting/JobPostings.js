@@ -22,7 +22,7 @@ const checkPinStatus = (job) => {
   return job.pinPost24hr || job.pinPost1wk || job.pinPost1mth;
 };
 
-export default function JobPostings() {
+export default function JobPostings({ selectedCategory }) {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,11 +42,16 @@ export default function JobPostings() {
         const snapshot = await getDocs(jobsQuery);
         
         // Map jobs and check pin status
-        const allJobs = snapshot.docs.map(doc => ({
+        let allJobs = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
           isPinned: checkPinStatus(doc.data())
         }));
+
+        // Filter by category if one is selected
+        if (selectedCategory) {
+          allJobs = allJobs.filter(job => job.primaryTag === selectedCategory);
+        }
 
         // Sort jobs - valid pins first, then by creation date
         const sortedJobs = allJobs.sort((a, b) => {
@@ -64,10 +69,20 @@ export default function JobPostings() {
     };
 
     fetchJobs();
-  }, []);
+  }, [selectedCategory]); // Re-run when category changes
 
   if (loading) {
     return <Container className="text-center mt-4">Loading job postings...</Container>;
+  }
+
+  if (jobs.length === 0) {
+    return (
+      <Container className="text-center mt-4">
+        {selectedCategory 
+          ? `No jobs found in ${selectedCategory} category` 
+          : "No jobs found"}
+      </Container>
+    );
   }
 
   return (
