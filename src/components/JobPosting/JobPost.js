@@ -15,6 +15,14 @@ function JobPost({ job }) {
 
   const isPinned = job.pinPost24hr || job.pinPost1wk || job.pinPost1mth;
 
+  const getDaysSincePosted = () => {
+    const postedDate = new Date(job.createdAt);
+    const currentDate = new Date();
+    const diffTime = Math.abs(currentDate - postedDate);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays === 0 ? 'Today' : diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+  };
+
   return (
     <Container>
       <Card className="mt-4">
@@ -23,7 +31,8 @@ function JobPost({ job }) {
             <Col>
               <Card.Title>{job.positionName}</Card.Title>
             </Col>
-            <Col xs="auto">
+            <Col xs="auto" className="d-flex align-items-center">
+              <small className="text-muted me-3">{getDaysSincePosted()}</small>
               <Button
                 className="button mx-2"
                 href={job.appURL || `mailto:${job.appEmail}`}
