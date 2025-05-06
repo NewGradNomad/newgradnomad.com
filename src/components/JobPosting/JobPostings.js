@@ -16,42 +16,30 @@ export default function JobPostings() {
         const db = getFirestore();
         const jobsRef = collection(db, "jobs");
 
-        // Query for active pinned jobs
-        const pinnedQuery = query(
-          jobsRef,
-          where("status", "==", "active"),
-          where("pinPost24hr", "==", true),
-          orderBy("createdAt", "desc")
-        );
-
-        // Query for active standard jobs
-        const standardQuery = query(
+        // Query for active jobs
+        const jobsQuery = query(
           jobsRef,
           where("status", "==", "active"),
           orderBy("createdAt", "desc")
         );
 
-        const [pinnedSnapshot, standardSnapshot] = await Promise.all([
-          getDocs(pinnedQuery),
-          getDocs(standardQuery),
-        ]);
+        const snapshot = await getDocs(jobsQuery);
+        
+        // Separate pinned and standard jobs
+        const pinned = [];
+        const standard = [];
+        
+        snapshot.docs.forEach(doc => {
+          const job = { id: doc.id, ...doc.data() };
+          if (job.pinPost24hr || job.pinPost1wk || job.pinPost1mth) {
+            pinned.push(job);
+          } else {
+            standard.push(job);
+          }
+        });
 
-        setPinnedJobs(
-          pinnedSnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }))
-        );
-
-        setStandardJobs(
-          standardSnapshot.docs
-            .filter((doc) => !doc.data().pinPost24hr)
-            .map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }))
-        );
-
+        setPinnedJobs(pinned);
+        setStandardJobs(standard);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching jobs:", error);
@@ -71,7 +59,6 @@ export default function JobPostings() {
       {pinnedJobs.map((job) => (
         <PinnedPosting key={job.id} job={job} />
       ))}
-
       {standardJobs.map((job) => (
         <StandardPosting key={job.id} job={job} />
       ))}
