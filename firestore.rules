@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public read access to jobs
+    match /jobs/{jobId} {
+      allow read: if true;
+      // Allow write access for job creation and updates
+      allow write: if true;
+    }
+  }
+}

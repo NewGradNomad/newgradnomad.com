@@ -1,13 +1,14 @@
 import "../../style/About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import "../../style/PostAJob.css";
 import Select from "react-select";
-import Checkout from "./Checkout";
 import { useNavigate } from "react-router-dom";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const standardListingPrice = 150;
 const supportPrice = 79;
@@ -66,6 +67,7 @@ function PostAJob() {
     pinPost1mth: "off",
     totalCost: standardListingPrice,
   });
+  const [error, setError] = useState("");
 
   const handleSelect = (value, action) => {
     if (value.length <= maxKeywords || action.name !== "keywords") {
@@ -136,48 +138,60 @@ function PostAJob() {
         [name]: "on",
       }));
     }
-    //computePrice();
     setState((prevState) => ({
       ...prevState,
       totalCost: state.totalCost + newCost,
     }));
   };
 
-  // compute the total price of the job posting
-  const computePrice = () => {
-    let sum = standardListingPrice;
-    //console.log(state.support);
-    if (state.support === "on") {
-      sum += supportPrice;
-    }
-    if (state.highlightPost === "on") {
-      sum += highlightPostPrice;
-    }
-    if (state.pinPost24hr === "on") {
-      sum += pinPost24hrPrice;
-    }
-    if (state.pinPost1wk === "on") {
-      sum += pinPost1wkPrice;
-    }
-    if (state.pinPost1mth === "on") {
-      sum += pinPost1mthPrice;
-    }
-    setState((prevState) => ({
-      ...prevState,
-      totalCost: sum,
-    }));
-  };
-
   const navigate = useNavigate();
-  const handleFormData = (event) => {
-    event.preventDefault(); //stops page from reloading
+  const handleFormData = async (event) => {
+    event.preventDefault();
+    setError("");
 
-    const formData = new FormData(event.target);
-    const formValues = Object.fromEntries(formData.entries());
-    formValues.keywords = formData.getAll("keywords");
-    //const formDataAsJsonStrings = JSON.stringify(formValues, null, 3);
-    //console.log(formDataAsJsonStrings);
-    navigate("/Checkout", { state: formValues });
+    try {
+      // Create the job posting object
+      const jobPosting = {
+        companyName: state.companyName,
+        positionName: state.positionName,
+        positionType: state.positionType.value,
+        primaryTag: state.primaryTag.value,
+        keywords: state.keywords.map((k) => k.value),
+        appURL: state.appURL,
+        appEmail: state.appEmail,
+        jobDesc: state.jobDesc,
+        support: state.support === "on",
+        pinPost24hr: state.pinPost24hr === "on",
+        pinPost1wk: state.pinPost1wk === "on",
+        pinPost1mth: state.pinPost1mth === "on",
+        totalCost: state.totalCost,
+        createdAt: new Date().toISOString(),
+        status: "pending", // Will be updated after payment
+      };
+
+      // Save to Firestore
+      const db = getFirestore();
+      const docRef = await addDoc(collection(db, "jobs"), jobPosting);
+
+      // Navigate to checkout with both form values and document ID
+      navigate("/Checkout", {
+        state: {
+          ...jobPosting,
+          jobId: docRef.id,
+        },
+      });
+    } catch (error) {
+      console.error("Error saving job posting:", error);
+      if (error.code === "permission-denied") {
+        setError("Permission denied. Please check your connection and try again.");
+      } else if (error.message?.includes("ERR_BLOCKED_BY_CLIENT")) {
+        setError(
+          "Your ad blocker may be preventing the form submission. Please disable it for this site and try again."
+        );
+      } else {
+        setError("Failed to save job posting. Please try again.");
+      }
+    }
   };
 
   return (
@@ -187,13 +201,18 @@ function PostAJob() {
         <p className="lead">
           <b>
             {" "}
-            We aggregate job listings from all around the web, but posting your
-            job directly to our site gives top priority to your job posting.
+            We aggregate job listings from all around the web, but posting your job directly to our
+            site gives top priority to your job posting.
           </b>{" "}
         </p>
       </Container>
 
       <Container className="gray-form mt-4 px-3">
+        {error && (
+          <Alert variant="danger" className="mt-3">
+            {error}
+          </Alert>
+        )}
         <Form noValidate onSubmit={handleFormData}>
           <Form.Label className="section-title mt-3">
             <b>Getting Started</b>
@@ -202,11 +221,7 @@ function PostAJob() {
           <Form.Group className="mb-3" controlId="companyName">
             <Form.Label className="">
               <b>Company Name</b>
-              <Form.Text
-                hidden={state.companyName}
-                className="form-text"
-                style={{ color: "red" }}
-              >
+              <Form.Text hidden={state.companyName} className="form-text" style={{ color: "red" }}>
                 &ensp;* Required: Please fill out.
               </Form.Text>
             </Form.Label>
@@ -233,8 +248,7 @@ function PostAJob() {
             <Form.Text
               hidden={state.positionName && state.positionType}
               className="form-text"
-              style={{ color: "red" }}
-            >
+              style={{ color: "red" }}>
               &ensp;* Required: Please fill out name and type.
             </Form.Text>
             <Form.Control
@@ -247,8 +261,8 @@ function PostAJob() {
             />
             <Container>
               <Form.Text className="form-text">
-                - Write terms like "Associate Software Engineer" or "Social
-                Media Manager" or "Business Analyst"
+                - Write terms like "Associate Software Engineer" or "Social Media Manager" or
+                "Business Analyst"
               </Form.Text>
             </Container>
           </Form.Group>
@@ -261,9 +275,7 @@ function PostAJob() {
               placeholder={"Position Type..."}
             />
             <Container>
-              <Form.Text className="form-text">
-                - Specify full-time, part-time, etc...
-              </Form.Text>
+              <Form.Text className="form-text">- Specify full-time, part-time, etc...</Form.Text>
             </Container>
           </Form.Group>
 
@@ -271,11 +283,7 @@ function PostAJob() {
             <Form.Label className="">
               <b>Primary Tag</b>
             </Form.Label>
-            <Form.Text
-              hidden={state.primaryTag}
-              className="form-text"
-              style={{ color: "red" }}
-            >
+            <Form.Text hidden={state.primaryTag} className="form-text" style={{ color: "red" }}>
               &ensp;* Required: Please fill out.
             </Form.Text>
             <Select
@@ -285,9 +293,7 @@ function PostAJob() {
               options={primaryTagOptions}
             />
             <Container>
-              <Form.Text className="form-text">
-                - Main function of specified job
-              </Form.Text>
+              <Form.Text className="form-text">- Main function of specified job</Form.Text>
             </Container>
           </Form.Group>
 
@@ -295,18 +301,13 @@ function PostAJob() {
             <Form.Label className="">
               <b>Keywords</b>
             </Form.Label>
-            <Form.Text
-              hidden={state.keywords}
-              className="form-text"
-              style={{ color: "red" }}
-            >
+            <Form.Text hidden={state.keywords} className="form-text" style={{ color: "red" }}>
               &ensp;* Required: Max of {maxKeywords}.
             </Form.Text>
             <Form.Text
               hidden={!(state.keywords.length === maxKeywords)}
               className="form-text"
-              style={{ color: "green" }}
-            >
+              style={{ color: "green" }}>
               &ensp;* You reached the {maxKeywords} keyword limit.
             </Form.Text>
             <Select
@@ -341,11 +342,7 @@ function PostAJob() {
           <Form.Group className="mb-3" controlId="support">
             <Form.Check
               type="checkbox"
-              label={
-                "Receive 24-hour support for your job posting (+$" +
-                supportPrice +
-                ")"
-              }
+              label={"Receive 24-hour support for your job posting (+$" + supportPrice + ")"}
               name="support"
               onChange={handleCheckBox}
               value={state.support}
@@ -355,11 +352,7 @@ function PostAJob() {
           <Form.Group className="mb-3" controlId="pinPost24hr">
             <Form.Check
               type="checkbox"
-              label={
-                "Pin post on front page for 24 hours (+$" +
-                pinPost24hrPrice +
-                ")"
-              }
+              label={"Pin post on front page for 24 hours (+$" + pinPost24hrPrice + ")"}
               name="pinPost24hr"
               onChange={handleCheckBox}
               value={state.pinPost24hr}
@@ -370,26 +363,18 @@ function PostAJob() {
           <Form.Group className="mb-3" controlId="pinPost1wk">
             <Form.Check
               type="checkbox"
-              label={
-                "Pin post on front page for 1 week (+$" + pinPost1wkPrice + ")"
-              }
+              label={"Pin post on front page for 1 week (+$" + pinPost1wkPrice + ")"}
               name="pinPost1wk"
               onChange={handleCheckBox}
               value={state.pinPost1wk}
-              disabled={
-                state.pinPost1mth === "on" || state.pinPost24hr === "on"
-              }
+              disabled={state.pinPost1mth === "on" || state.pinPost24hr === "on"}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="pinPost1mth">
             <Form.Check
               type="checkbox"
-              label={
-                "Pin post on front page for 1 month (+$" +
-                pinPost1mthPrice +
-                ")"
-              }
+              label={"Pin post on front page for 1 month (+$" + pinPost1mthPrice + ")"}
               name="pinPost1mth"
               onChange={handleCheckBox}
               value={state.pinPost1mth}
@@ -404,8 +389,7 @@ function PostAJob() {
           <Form.Text
             hidden={state.appURL || state.appEmail}
             className="form-text"
-            style={{ color: "red" }}
-          >
+            style={{ color: "red" }}>
             &ensp;* Required: Please choose either email or URL.
           </Form.Text>
 
@@ -424,8 +408,8 @@ function PostAJob() {
             />
             <Container>
               <Form.Text className="form-text">
-                - This is the job link applicants will be forwarded to in order
-                to apply top your job
+                - This is the job link applicants will be forwarded to in order to apply top your
+                job
               </Form.Text>
             </Container>
           </Form.Group>
@@ -456,14 +440,12 @@ function PostAJob() {
                 !state.appEmail
               }
               className="form-text"
-              style={{ color: "red" }}
-            >
+              style={{ color: "red" }}>
               &ensp;Please provide a valid email.<br></br>
             </Form.Text>
             <Container>
               <Form.Text className="form-text">
-                - Applicant is routed to this email if no application url is
-                provided!
+                - Applicant is routed to this email if no application url is provided!
               </Form.Text>
             </Container>
           </Form.Group>
@@ -471,11 +453,7 @@ function PostAJob() {
           <Form.Label className="">
             <b>Job Description</b>
           </Form.Label>
-          <Form.Text
-            hidden={state.jobDesc}
-            className="form-text"
-            style={{ color: "red" }}
-          >
+          <Form.Text hidden={state.jobDesc} className="form-text" style={{ color: "red" }}>
             &ensp;* Required: Please fill out.
           </Form.Text>
           <Form.Group controlId="jobDesc">
@@ -490,14 +468,7 @@ function PostAJob() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="totalCost">
-            <Form.Check
-              required
-              checked
-              hidden
-              readOnly
-              name="totalCost"
-              value={state.totalCost}
-            />
+            <Form.Check required checked hidden readOnly name="totalCost" value={state.totalCost} />
           </Form.Group>
 
           <Button
@@ -520,8 +491,7 @@ function PostAJob() {
                   ).test(state.appEmail))
               ) ||
               !state.jobDesc
-            }
-          >
+            }>
             {/* append price to end of checkout button */}
             <b>Checkout Job Posting ${state.totalCost}</b>
           </Button>
