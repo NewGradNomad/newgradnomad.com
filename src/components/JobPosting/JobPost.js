@@ -13,8 +13,6 @@ function JobPost({ job }) {
     setShowText(!showText);
   };
 
-  const isPinned = job.pinPost24hr || job.pinPost1wk || job.pinPost1mth;
-
   const getDaysSincePosted = () => {
     const postedDate = new Date(job.createdAt);
     const currentDate = new Date();
@@ -40,7 +38,7 @@ function JobPost({ job }) {
                 <strong>Apply</strong>
               </Button>
             </Col>
-            {isPinned && (
+            {job.isPinned && (
               <Col xs="auto">
                 <p style={{ fontSize: "20px" }}>📌</p>
               </Col>
