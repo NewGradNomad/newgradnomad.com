@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import "./JobPostings.css";
-import StandardPosting from "./StandardPosting";
-import PinnedPosting from "./PinnedPosting";
+import JobPost from "./JobPost";
 import { getFirestore, collection, query, where, getDocs, orderBy } from "firebase/firestore";
 
 export default function JobPostings() {
-  const [pinnedJobs, setPinnedJobs] = useState([]);
-  const [standardJobs, setStandardJobs] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,21 +23,22 @@ export default function JobPostings() {
 
         const snapshot = await getDocs(jobsQuery);
         
-        // Separate pinned and standard jobs
-        const pinned = [];
-        const standard = [];
-        
-        snapshot.docs.forEach(doc => {
-          const job = { id: doc.id, ...doc.data() };
-          if (job.pinPost24hr || job.pinPost1wk || job.pinPost1mth) {
-            pinned.push(job);
-          } else {
-            standard.push(job);
-          }
+        // Sort jobs - pinned first, then by creation date
+        const allJobs = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+
+        const sortedJobs = allJobs.sort((a, b) => {
+          const aIsPinned = a.pinPost24hr || a.pinPost1wk || a.pinPost1mth;
+          const bIsPinned = b.pinPost24hr || b.pinPost1wk || b.pinPost1mth;
+          
+          if (aIsPinned && !bIsPinned) return -1;
+          if (!aIsPinned && bIsPinned) return 1;
+          return 0;
         });
 
-        setPinnedJobs(pinned);
-        setStandardJobs(standard);
+        setJobs(sortedJobs);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching jobs:", error);
@@ -56,11 +55,8 @@ export default function JobPostings() {
 
   return (
     <>
-      {pinnedJobs.map((job) => (
-        <PinnedPosting key={job.id} job={job} />
-      ))}
-      {standardJobs.map((job) => (
-        <StandardPosting key={job.id} job={job} />
+      {jobs.map((job) => (
+        <JobPost key={job.id} job={job} />
       ))}
     </>
   );
