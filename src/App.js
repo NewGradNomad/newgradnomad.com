@@ -1,13 +1,8 @@
+import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import HeroSection from "./components/HeroSection";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  BrowserRouter,
-} from "react-router-dom";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Programs from "./components/pages/Programs";
@@ -15,7 +10,6 @@ import NewGradPrograms from "./components/pages/NewGradPrograms";
 import PostAJob from "./components/pages/PostAJob";
 import Checkout from "./components/pages/Checkout";
 import NotFound from "./components/pages/NotFound";
-import Footer from "./components/Footer";
 
 export default function App() {
   return (
