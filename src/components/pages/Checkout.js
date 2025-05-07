@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import "../../style/About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
@@ -8,36 +8,22 @@ import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function Checkout() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [formValues, setFormValues] = useState(location.state);
 
+  // Store job data in sessionStorage when available
   useEffect(() => {
-    // Store job data in sessionStorage when it's available from location.state
     if (location.state?.jobId) {
       sessionStorage.setItem('checkoutJobData', JSON.stringify(location.state));
-    }
-
-    // Check URL params on mount and after redirect
-    const query = new URLSearchParams(window.location.search);
-
-    if (query.get("success")) {
-      handlePaymentSuccess(query.get("session_id"));
-    }
-
-    if (query.get("canceled")) {
-      setMessage("Order canceled -- continue to shop around and checkout when you're ready.");
-    }
-
-    // Restore form values from sessionStorage if needed
-    if (!location.state && sessionStorage.getItem('checkoutJobData')) {
+      setFormValues(location.state);
+    } else if (!formValues && sessionStorage.getItem('checkoutJobData')) {
       setFormValues(JSON.parse(sessionStorage.getItem('checkoutJobData')));
     }
-  }, [location.state]);
+  }, [location.state, formValues]);
 
-  const handlePaymentSuccess = async (sessionId) => {
+  const handlePaymentSuccess = useCallback(async (sessionId) => {
     try {
       // Get job data from sessionStorage if formValues is not available
       const jobData = formValues || JSON.parse(sessionStorage.getItem('checkoutJobData'));
@@ -70,7 +56,20 @@ export default function Checkout() {
       console.error("Error updating job status:", err);
       setError("Payment was successful but there was an error activating your job posting. Please contact support.");
     }
-  };
+  }, [formValues]); // Add formValues as a dependency
+
+  useEffect(() => {
+    // Check URL params on mount and after redirect
+    const query = new URLSearchParams(window.location.search);
+
+    if (query.get("success")) {
+      handlePaymentSuccess(query.get("session_id"));
+    }
+
+    if (query.get("canceled")) {
+      setMessage("Order canceled -- continue to shop around and checkout when you're ready.");
+    }
+  }, [handlePaymentSuccess]);
 
   const handleCheckout = async () => {
     setLoading(true);
