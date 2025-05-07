@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import "../../style/About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,19 +12,16 @@ export default function Checkout() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [formValues, setFormValues] = useState(location.state);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
-  // Store job data in sessionStorage when available
-  useEffect(() => {
-    if (location.state?.jobId) {
-      sessionStorage.setItem('checkoutJobData', JSON.stringify(location.state));
-      setFormValues(location.state);
-    } else if (!formValues && sessionStorage.getItem('checkoutJobData')) {
-      setFormValues(JSON.parse(sessionStorage.getItem('checkoutJobData')));
-    }
-  }, [location.state, formValues]);
+  // Memoize URL parameters
+  const query = useMemo(() => new URLSearchParams(window.location.search), []);
+  const isSuccess = query.get("success");
+  const isCanceled = query.get("canceled");
 
   const handlePaymentSuccess = useCallback(async (sessionId) => {
     try {
+      setIsProcessingPayment(true);
       // Get job data from sessionStorage if formValues is not available
       const jobData = formValues || JSON.parse(sessionStorage.getItem('checkoutJobData'));
       
@@ -55,21 +52,38 @@ export default function Checkout() {
     } catch (err) {
       console.error("Error updating job status:", err);
       setError("Payment was successful but there was an error activating your job posting. Please contact support.");
+    } finally {
+      setIsProcessingPayment(false);
     }
-  }, [formValues]); // Add formValues as a dependency
+  }, [formValues]);
 
   useEffect(() => {
-    // Check URL params on mount and after redirect
-    const query = new URLSearchParams(window.location.search);
+    if (location.state?.jobId) {
+      sessionStorage.setItem('checkoutJobData', JSON.stringify(location.state));
+      setFormValues(location.state);
+    } else if (!formValues && sessionStorage.getItem('checkoutJobData')) {
+      setFormValues(JSON.parse(sessionStorage.getItem('checkoutJobData')));
+    }
 
-    if (query.get("success")) {
+    if (isSuccess) {
       handlePaymentSuccess(query.get("session_id"));
     }
 
-    if (query.get("canceled")) {
+    if (isCanceled) {
       setMessage("Order canceled -- continue to shop around and checkout when you're ready.");
     }
-  }, [handlePaymentSuccess]);
+  }, [location.state, formValues, handlePaymentSuccess, isSuccess, isCanceled, query]);
+
+  // Show loading state while processing payment
+  if (isProcessingPayment) {
+    return (
+      <Container className="py-5">
+        <div className="text-center">
+          <h3>Processing payment...</h3>
+        </div>
+      </Container>
+    );
+  }
 
   const handleCheckout = async () => {
     setLoading(true);
