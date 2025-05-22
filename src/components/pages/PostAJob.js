@@ -60,11 +60,11 @@ function PostAJob() {
     appURL: "",
     appEmail: "",
     jobDesc: "",
-    support: "off",
-    highlightPost: "off",
-    pinPost24hr: "off",
-    pinPost1wk: "off",
-    pinPost1mth: "off",
+    support: false,
+    highlightPost: false,
+    pinPost24hr: false,
+    pinPost1wk: false,
+    pinPost1mth: false,
     totalCost: standardListingPrice,
   });
   const [error, setError] = useState("");
@@ -87,60 +87,55 @@ function PostAJob() {
   };
 
   const handleCheckBox = (e) => {
-    const { value, name } = e.target;
+    const { name, checked } = e.target;
     let newCost = 0.0;
-    if (value === "on") {
-      switch (true) {
-        case name === "support":
+
+    if (!checked) {
+      switch (name) {
+        case "support":
           newCost -= supportPrice;
           break;
-        case name === "highlightPost":
+        case "highlightPost":
           newCost -= highlightPostPrice;
           break;
-        case name === "pinPost24hr":
+        case "pinPost24hr":
           newCost -= pinPost24hrPrice;
           break;
-        case name === "pinPost1wk":
+        case "pinPost1wk":
           newCost -= pinPost1wkPrice;
           break;
-        case name === "pinPost1mth":
+        case "pinPost1mth":
           newCost -= pinPost1mthPrice;
           break;
         default:
           break;
       }
-      setState((prevState) => ({
-        ...prevState,
-        [name]: "off",
-      }));
     } else {
-      switch (true) {
-        case name === "support":
+      switch (name) {
+        case "support":
           newCost += supportPrice;
           break;
-        case name === "highlightPost":
+        case "highlightPost":
           newCost += highlightPostPrice;
           break;
-        case name === "pinPost24hr":
+        case "pinPost24hr":
           newCost += pinPost24hrPrice;
           break;
-        case name === "pinPost1wk":
+        case "pinPost1wk":
           newCost += pinPost1wkPrice;
           break;
-        case name === "pinPost1mth":
+        case "pinPost1mth":
           newCost += pinPost1mthPrice;
           break;
         default:
           break;
       }
-      setState((prevState) => ({
-        ...prevState,
-        [name]: "on",
-      }));
     }
+
     setState((prevState) => ({
       ...prevState,
-      totalCost: state.totalCost + newCost,
+      [name]: checked,
+      totalCost: prevState.totalCost + newCost,
     }));
   };
 
@@ -160,10 +155,10 @@ function PostAJob() {
         appURL: state.appURL,
         appEmail: state.appEmail,
         jobDesc: state.jobDesc,
-        support: state.support === "on",
-        pinPost24hr: state.pinPost24hr === "on",
-        pinPost1wk: state.pinPost1wk === "on",
-        pinPost1mth: state.pinPost1mth === "on",
+        support: state.support,
+        pinPost24hr: state.pinPost24hr,
+        pinPost1wk: state.pinPost1wk,
+        pinPost1mth: state.pinPost1mth,
         totalCost: state.totalCost,
         createdAt: new Date().toISOString(),
         status: "pending", // Will be updated after payment
@@ -345,7 +340,7 @@ function PostAJob() {
               label={"Receive 24-hour support for your job posting (+$" + supportPrice + ")"}
               name="support"
               onChange={handleCheckBox}
-              value={state.support}
+              checked={state.support}
             />
           </Form.Group>
 
@@ -355,8 +350,8 @@ function PostAJob() {
               label={"Pin post on front page for 24 hours (+$" + pinPost24hrPrice + ")"}
               name="pinPost24hr"
               onChange={handleCheckBox}
-              value={state.pinPost24hr}
-              disabled={state.pinPost1wk === "on" || state.pinPost1mth === "on"}
+              checked={state.pinPost24hr}
+              disabled={state.pinPost1wk || state.pinPost1mth}
             />
           </Form.Group>
 
@@ -366,8 +361,8 @@ function PostAJob() {
               label={"Pin post on front page for 1 week (+$" + pinPost1wkPrice + ")"}
               name="pinPost1wk"
               onChange={handleCheckBox}
-              value={state.pinPost1wk}
-              disabled={state.pinPost1mth === "on" || state.pinPost24hr === "on"}
+              checked={state.pinPost1wk}
+              disabled={state.pinPost1mth || state.pinPost24hr}
             />
           </Form.Group>
 
@@ -377,8 +372,8 @@ function PostAJob() {
               label={"Pin post on front page for 1 month (+$" + pinPost1mthPrice + ")"}
               name="pinPost1mth"
               onChange={handleCheckBox}
-              value={state.pinPost1mth}
-              disabled={state.pinPost1wk === "on" || state.pinPost24hr === "on"}
+              checked={state.pinPost1mth}
+              disabled={state.pinPost1wk || state.pinPost24hr}
             />
           </Form.Group>
 
